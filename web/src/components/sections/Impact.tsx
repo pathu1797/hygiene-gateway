@@ -27,11 +27,11 @@ export default function Impact() {
                             A New Standard for <br className="hidden sm:block" />
                             <span className="text-neon-blue">Hygiene Infrastructure</span>
                         </h2>
-                        <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+                        <p className="text-gray-800 text-base sm:text-lg leading-relaxed font-medium">
                             Reduces hospital-acquired infections. Improves compliance. Minimizes waste.
                             Protects healthcare professionals and patients alike.
                         </p>
-                        <p className="text-sm sm:text-base text-gray-600 font-medium">
+                        <p className="text-sm sm:text-base text-gray-900 font-bold">
                             Designed not only for today — but for future pandemics.
                         </p>
                     </motion.div>
@@ -44,11 +44,11 @@ export default function Impact() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ delay: i * 0.1 }}
-                                className="bg-gray-50 p-6 rounded-2xl border border-gray-200 hover:border-neon-blue/50 transition-colors shadow-sm"
+                                className="bg-white p-6 rounded-2xl border border-gray-200 hover:border-neon-blue/50 transition-colors shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
                             >
                                 <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-neon-blue mb-2" />
-                                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">{stat.value}</h3>
-                                <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">{stat.label}</p>
+                                <h3 className="text-2xl sm:text-3xl font-black text-gray-900">{stat.value}</h3>
+                                <p className="text-xs sm:text-sm text-gray-700 font-bold uppercase tracking-widest">{stat.label}</p>
                             </motion.div>
                         ))}
                     </div>

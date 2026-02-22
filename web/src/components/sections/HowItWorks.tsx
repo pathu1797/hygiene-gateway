@@ -105,10 +105,10 @@ export default function HowItWorks() {
                                         {index <= activeStep && <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neon-blue" />}
                                     </div>
 
-                                    <h3 className={cn("text-xl sm:text-2xl font-bold mb-1 md:mb-2 transition-colors", step.color)}>
+                                    <h3 className={cn("text-xl sm:text-2xl font-black mb-1 md:mb-2 transition-colors tracking-tight", step.color)}>
                                         {step.title}
                                     </h3>
-                                    <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                                    <p className="text-gray-200 text-sm sm:text-base leading-relaxed font-medium">
                                         {step.description}
                                     </p>
                                 </div>
@@ -117,7 +117,7 @@ export default function HowItWorks() {
                     </div>
 
                     {/* Right: Visual */}
-                    <div className="relative h-[250px] sm:h-[350px] md:h-[500px] glass rounded-2xl p-6 md:p-8 flex items-center justify-center border border-gray-800 scale-90 sm:scale-100 transition-transform">
+                    <div className="relative h-[250px] sm:h-[350px] md:h-[500px] glass rounded-2xl p-6 md:p-8 flex items-center justify-center border border-white/10 scale-90 sm:scale-100 transition-transform">
                         {/* Animated Central Icon based on Step */}
                         <div className="relative z-10">
                             {steps.map((step, index) => {
@@ -135,7 +135,7 @@ export default function HowItWorks() {
                                         transition={{ duration: 0.5 }}
                                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                                     >
-                                        <div className={cn("p-8 sm:p-12 rounded-full ring-4 ring-opacity-20 backdrop-blur-3xl", step.bg, `ring-${step.color.split('-')[1]}`)}>
+                                        <div className={cn("p-8 sm:p-12 rounded-full ring-8 ring-opacity-40 backdrop-blur-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]", step.bg, `ring-${step.color.split('-')[1]}`)}>
                                             <Icon className={cn("w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32", step.color)} />
                                         </div>
                                     </motion.div>

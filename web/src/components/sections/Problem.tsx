@@ -32,13 +32,13 @@ export default function Problem() {
                         Optional hygiene creates <br className="hidden sm:block" />
                         <span className="text-red-500 text-glow">invisible risks.</span>
                     </h2>
-                    <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
-                        In hospitals and laboratories, handwashing is recommended but <span className="text-white">not enforced</span>.
+                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+                        In hospitals and laboratories, handwashing is recommended but <span className="text-white font-semibold">not enforced</span>.
                         This compliance gap allows infections to spread silently.
                         During pandemics, this gap becomes catastrophic.
                     </p>
-                    <div className="p-4 border-l-2 border-red-500 bg-red-500/5 backdrop-blur-sm">
-                        <p className="text-red-200 italic text-sm sm:text-base">
+                    <div className="p-4 border-l-2 border-red-500 bg-red-500/10 backdrop-blur-sm">
+                        <p className="text-red-100 italic text-sm sm:text-base font-medium">
                             "Safety should never depend on human memory."
                         </p>
                     </div>
@@ -49,20 +49,20 @@ export default function Problem() {
                     style={{ opacity, x: useTransform(scrollYProgress, [0.1, 0.3], [50, 0]) }}
                     className="relative h-[300px] sm:h-[400px] md:h-[600px] rounded-2xl overflow-hidden glass-card group"
                 >
-                    <div className="absolute inset-0 bg-red-900/10 transition-colors group-hover:bg-red-900/20" />
-                    <div className="absolute inset-0 bg-black/40 z-10" />
+                    <div className="absolute inset-0 bg-red-900/20 transition-colors group-hover:bg-red-900/30" />
+                    <div className="absolute inset-0 bg-black/50 z-10" />
                     <video
                         autoPlay
                         loop
                         muted
                         playsInline
-                        className="absolute inset-0 w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 transition-all duration-700"
+                        className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale group-hover:grayscale-0 transition-all duration-700"
                     >
                         <source src="/animate2.mp4" type="video/mp4" />
                     </video>
 
-                    <div className="absolute bottom-6 left-6">
-                        <p className="text-red-500 text-[10px] sm:text-sm font-bold font-mono tracking-[0.3em] uppercase">DANGER</p>
+                    <div className="absolute bottom-6 left-6 z-20">
+                        <p className="text-red-500 text-xs sm:text-sm font-black font-mono tracking-[0.4em] uppercase shadow-sm">DANGER</p>
                     </div>
                 </motion.div>
             </div>

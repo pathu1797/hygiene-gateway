@@ -50,7 +50,7 @@ export default function Solution() {
                     <div className="absolute bottom-6 left-6 z-30">
                         <div className="flex items-center gap-2 text-neon-blue">
                             <ShieldCheck className="w-5 h-5 flex-shrink-0" />
-                            <p className="text-[10px] sm:text-sm font-mono tracking-widest uppercase">ACCESS GRANTED</p>
+                            <p className="text-xs sm:text-sm font-black font-mono tracking-widest uppercase">ACCESS GRANTED</p>
                         </div>
                     </div>
                 </motion.div>
@@ -65,9 +65,9 @@ export default function Solution() {
                         Transform hygiene from <br className="hidden sm:block" />
                         optional to <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-cyan text-glow">mandatory.</span>
                     </h2>
-                    <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
+                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
                         Integrate touchless sanitation with automated gateway access control.
-                        The gateway remains <span className="text-white font-medium">physically locked</span> until sanitation is verified by sensors.
+                        The gateway remains <span className="text-white font-semibold">physically locked</span> until sanitation is verified by sensors.
                     </p>
 
                     <ul className="space-y-4 pt-4">
@@ -77,7 +77,7 @@ export default function Solution() {
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 + (i * 0.1) }}
-                                className="flex items-center gap-3 text-gray-300 text-sm sm:text-base"
+                                className="flex items-center gap-3 text-gray-100 text-sm sm:text-base font-medium"
                             >
                                 <div className="w-1.5 h-1.5 rounded-full bg-neon-blue shadow-[0_0_10px_#00f3ff] flex-shrink-0" />
                                 {item}
