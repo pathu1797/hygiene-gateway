@@ -18,27 +18,27 @@ export default function Problem() {
         <section
             id="problem"
             ref={containerRef}
-            className="max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center relative"
+            className="max-w-7xl mx-auto px-6 py-16 sm:py-24 min-h-[100dvh] flex items-center justify-center relative"
         >
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-12 items-center w-full">
 
                 {/* Text Content */}
-                <motion.div style={{ opacity, y }} className="space-y-6 z-10">
+                <motion.div style={{ opacity, y }} className="space-y-6 z-10 text-left">
                     <div className="flex items-center gap-2 text-red-500 mb-4">
-                        <AlertTriangle className="w-5 h-5" />
-                        <span className="text-sm font-bold tracking-widest uppercase">The Critical Flaw</span>
+                        <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm font-bold tracking-widest uppercase">The Critical Flaw</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                        Optional hygiene creates <br />
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                        Optional hygiene creates <br className="hidden sm:block" />
                         <span className="text-red-500 text-glow">invisible risks.</span>
                     </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed">
+                    <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
                         In hospitals and laboratories, handwashing is recommended but <span className="text-white">not enforced</span>.
                         This compliance gap allows infections to spread silently.
                         During pandemics, this gap becomes catastrophic.
                     </p>
                     <div className="p-4 border-l-2 border-red-500 bg-red-500/5 backdrop-blur-sm">
-                        <p className="text-red-200 italic">
+                        <p className="text-red-200 italic text-sm sm:text-base">
                             "Safety should never depend on human memory."
                         </p>
                     </div>
@@ -47,7 +47,7 @@ export default function Problem() {
                 {/* Visual / Image Placeholder */}
                 <motion.div
                     style={{ opacity, x: useTransform(scrollYProgress, [0.1, 0.3], [50, 0]) }}
-                    className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden glass-card group"
+                    className="relative h-[300px] sm:h-[400px] md:h-[600px] rounded-2xl overflow-hidden glass-card group"
                 >
                     <div className="absolute inset-0 bg-red-900/10 transition-colors group-hover:bg-red-900/20" />
                     <div className="absolute inset-0 bg-black/40 z-10" />
@@ -62,7 +62,7 @@ export default function Problem() {
                     </video>
 
                     <div className="absolute bottom-6 left-6">
-                        <p className="text-red-500 text-sm font-bold font-mono tracking-[0.3em] uppercase">DANGER</p>
+                        <p className="text-red-500 text-[10px] sm:text-sm font-bold font-mono tracking-[0.3em] uppercase">DANGER</p>
                     </div>
                 </motion.div>
             </div>

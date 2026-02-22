@@ -13,7 +13,7 @@ const stats = [
 
 export default function Impact() {
     return (
-        <section id="impact" className="py-24 px-6 bg-white text-black relative overflow-hidden">
+        <section id="impact" className="py-16 sm:py-24 px-6 bg-white text-black relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
 
@@ -21,22 +21,22 @@ export default function Impact() {
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-6 z-10"
+                        className="space-y-6 z-10 text-center md:text-left"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                            A New Standard for <br />
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                            A New Standard for <br className="hidden sm:block" />
                             <span className="text-neon-blue">Hygiene Infrastructure</span>
                         </h2>
-                        <p className="text-gray-600 text-lg leading-relaxed">
+                        <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
                             Reduces hospital-acquired infections. Improves compliance. Minimizes waste.
                             Protects healthcare professionals and patients alike.
                         </p>
-                        <p className="text-gray-600 font-medium">
+                        <p className="text-sm sm:text-base text-gray-600 font-medium">
                             Designed not only for today — but for future pandemics.
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
@@ -46,9 +46,9 @@ export default function Impact() {
                                 transition={{ delay: i * 0.1 }}
                                 className="bg-gray-50 p-6 rounded-2xl border border-gray-200 hover:border-neon-blue/50 transition-colors shadow-sm"
                             >
-                                <stat.icon className="w-8 h-8 text-neon-blue mb-2" />
-                                <h3 className="text-3xl font-bold text-gray-900">{stat.value}</h3>
-                                <p className="text-sm text-gray-500 uppercase tracking-widest">{stat.label}</p>
+                                <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-neon-blue mb-2" />
+                                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">{stat.value}</h3>
+                                <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-widest">{stat.label}</p>
                             </motion.div>
                         ))}
                     </div>

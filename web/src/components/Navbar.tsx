@@ -28,8 +28,8 @@ export default function Navbar() {
         >
             <div className="mx-auto max-w-7xl">
                 <div className="glass rounded-2xl px-6 py-3 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative w-8 h-8 md:w-10 md:h-10">
+                    <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+                        <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10">
                             <Image
                                 src="/logo.webp"
                                 alt="Hygiene Gateway Logo"
@@ -37,7 +37,7 @@ export default function Navbar() {
                                 className="object-contain"
                             />
                         </div>
-                        <div className="text-xl font-bold tracking-tighter flex items-center gap-2">
+                        <div className="text-lg sm:text-xl font-bold tracking-tighter flex items-center gap-1.5 sm:gap-2">
                             <span className="text-neon-blue">HYGIENE</span>
                             <span className="text-white group-hover:text-glow transition-all">GATEWAY</span>
                         </div>

@@ -12,7 +12,7 @@ export default function Footer() {
     return (
         <footer className="bg-black text-gray-500 py-20 px-6 border-t border-white/10">
             <div className="max-w-7xl mx-auto">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 mb-16">
                     {teamContacts.map((contact, i) => (
                         <div key={i} className="space-y-3 p-4 rounded-xl border border-white/5 hover:border-neon-blue/20 transition-all group">
                             <h4 className="text-white font-bold text-sm tracking-tight group-hover:text-neon-blue transition-colors">
@@ -37,15 +37,15 @@ export default function Footer() {
                     ))}
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-white/5">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-12 md:gap-8 pt-8 border-t border-white/5">
                     <div className="text-center md:text-left">
                         <h3 className="text-white font-bold text-lg mb-1 tracking-tighter">
                             <span className="text-neon-blue">HYGIENE</span> GATEWAY
                         </h3>
-                        <p className="text-xs uppercase tracking-widest text-gray-600">Innovation for a Safer Tomorrow.</p>
+                        <p className="text-[10px] uppercase tracking-widest text-gray-600">Innovation for a Safer Tomorrow.</p>
                     </div>
 
-                    <div className="flex gap-8 text-xs font-medium uppercase tracking-widest">
+                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[10px] sm:text-xs font-medium uppercase tracking-widest">
                         <Link
                             href="/privacy.pdf"
                             target="_blank"
@@ -73,7 +73,7 @@ export default function Footer() {
                         </Link>
                     </div>
 
-                    <div className="text-[10px] uppercase tracking-[0.2em] text-gray-600">
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-gray-600 text-center">
                         &copy; {new Date().getFullYear()} Hygiene Gateway Project.
                     </div>
                 </div>

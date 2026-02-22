@@ -17,7 +17,7 @@ export default function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black"
+            className="relative min-h-[100dvh] w-full overflow-hidden flex items-center justify-center bg-black py-20 px-6"
         >
             {/* Background with Parallax and Zoom */}
             <motion.div
@@ -33,18 +33,18 @@ export default function Hero() {
             </motion.div>
 
             {/* Content */}
-            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
+            <div className="relative z-10 text-center w-full max-w-4xl mx-auto space-y-8">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 >
                     <div className="inline-block px-3 py-1 mb-4 border border-neon-blue/30 rounded-full bg-neon-blue/10 backdrop-blur-md">
-                        <span className="text-neon-blue text-xs tracking-[0.2em] font-medium uppercase">
+                        <span className="text-[10px] md:text-xs tracking-[0.2em] font-medium uppercase text-neon-blue">
                             Innovation in Public Health
                         </span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
                         Hygiene, <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-cyan text-glow">
                             Enforced by Design
@@ -56,11 +56,11 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed"
+                    className="text-base md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed px-4"
                 >
                     An intelligent gateway that ensures mandatory hand sanitation before entry.
-                    <br />
-                    <span className="italic text-neon-blue/90 font-medium">No compliance — no access.</span>
+                    <br className="hidden sm:block" />
+                    <span className="italic text-neon-blue/90 font-medium"> No compliance — no access.</span>
                 </motion.p>
 
                 <motion.div
@@ -72,9 +72,9 @@ export default function Hero() {
                     <motion.div
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        className="text-gray-500 flex flex-col items-center gap-2 cursor-pointer"
+                        className="text-gray-500 flex flex-col items-center gap-2 cursor-pointer pb-10"
                     >
-                        <span className="text-xs uppercase tracking-widest text-neon-blue/60">Explore</span>
+                        <span className="text-[10px] uppercase tracking-widest text-neon-blue/60">Explore</span>
                         <ArrowDown className="w-5 h-5 text-neon-blue" />
                     </motion.div>
                 </motion.div>

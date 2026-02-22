@@ -18,14 +18,14 @@ export default function Solution() {
         <section
             id="solution"
             ref={containerRef}
-            className="max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center relative"
+            className="max-w-7xl mx-auto px-6 py-16 sm:py-24 min-h-[100dvh] flex items-center justify-center relative"
         >
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-12 items-center w-full">
 
                 {/* Visual / Image Placeholder (Left on desktop) */}
                 <motion.div
                     style={{ opacity, x: useTransform(scrollYProgress, [0.1, 0.3], [-50, 0]) }}
-                    className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden glass-card order-2 md:order-1 group"
+                    className="relative h-[300px] sm:h-[400px] md:h-[600px] rounded-2xl overflow-hidden glass-card order-2 md:order-1 group"
                 >
                     <div className="absolute inset-0 bg-neon-blue/5 z-10" />
                     <video
@@ -49,23 +49,23 @@ export default function Solution() {
 
                     <div className="absolute bottom-6 left-6 z-30">
                         <div className="flex items-center gap-2 text-neon-blue">
-                            <ShieldCheck className="w-5 h-5" />
-                            <p className="text-sm font-mono tracking-widest">ACCESS GRANTED</p>
+                            <ShieldCheck className="w-5 h-5 flex-shrink-0" />
+                            <p className="text-[10px] sm:text-sm font-mono tracking-widest uppercase">ACCESS GRANTED</p>
                         </div>
                     </div>
                 </motion.div>
 
                 {/* Text Content */}
-                <motion.div style={{ opacity, y }} className="space-y-6 z-10 order-1 md:order-2">
+                <motion.div style={{ opacity, y }} className="space-y-6 z-10 order-1 md:order-2 text-left">
                     <div className="flex items-center gap-2 text-neon-blue mb-4">
-                        <CheckCircle className="w-5 h-5" />
-                        <span className="text-sm font-bold tracking-widest uppercase">The Solution</span>
+                        <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm font-bold tracking-widest uppercase">The Solution</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                        Transform hygiene from <br />
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                        Transform hygiene from <br className="hidden sm:block" />
                         optional to <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-cyan text-glow">mandatory.</span>
                     </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed">
+                    <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
                         Integrate touchless sanitation with automated gateway access control.
                         The gateway remains <span className="text-white font-medium">physically locked</span> until sanitation is verified by sensors.
                     </p>
@@ -77,9 +77,9 @@ export default function Solution() {
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 + (i * 0.1) }}
-                                className="flex items-center gap-3 text-gray-300"
+                                className="flex items-center gap-3 text-gray-300 text-sm sm:text-base"
                             >
-                                <div className="w-1.5 h-1.5 rounded-full bg-neon-blue shadow-[0_0_10px_#00f3ff]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-neon-blue shadow-[0_0_10px_#00f3ff] flex-shrink-0" />
                                 {item}
                             </motion.li>
                         ))}

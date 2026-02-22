@@ -63,26 +63,26 @@ export default function HowItWorks() {
             ref={containerRef}
             className="relative h-[300vh] bg-black"
         >
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+            <div className="sticky top-0 min-h-[100dvh] w-full flex items-center justify-center overflow-hidden py-12 md:py-0">
 
-                <div className="max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div className="max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
 
                     {/* Left: Text Content & Steps */}
-                    <div className="space-y-12">
+                    <div className="space-y-8 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                            <h2 className="text-3xl md:text-5xl font-bold mb-4">
                                 Detect. Verify. <span className="text-neon-blue">Allow.</span>
                             </h2>
-                            <p className="text-gray-400 text-lg">
+                            <p className="text-gray-400 text-base md:text-lg">
                                 A seamless sequential process ensures compliance without delay.
                             </p>
                         </motion.div>
 
-                        <div className="space-y-8 relative">
+                        <div className="space-y-6 md:space-y-8 relative">
                             {/* Vertical Line */}
                             <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gray-800" />
                             <motion.div
@@ -94,21 +94,21 @@ export default function HowItWorks() {
                                 <div
                                     key={index}
                                     className={cn(
-                                        "relative pl-16 transition-opacity duration-500",
+                                        "relative pl-12 sm:pl-16 transition-opacity duration-500",
                                         index === activeStep ? "opacity-100" : "opacity-30"
                                     )}
                                 >
                                     <div className={cn(
-                                        "absolute left-3 -translate-x-1/2 w-6 h-6 rounded-full border-2 transition-colors duration-500 bg-black z-10 flex items-center justify-center",
+                                        "absolute left-3 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 transition-colors duration-500 bg-black z-10 flex items-center justify-center",
                                         index <= activeStep ? "border-neon-blue shadow-[0_0_10px_#00f3ff]" : "border-gray-700"
                                     )}>
-                                        {index <= activeStep && <div className="w-2 h-2 rounded-full bg-neon-blue" />}
+                                        {index <= activeStep && <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neon-blue" />}
                                     </div>
 
-                                    <h3 className={cn("text-2xl font-bold mb-2 transition-colors", step.color)}>
+                                    <h3 className={cn("text-xl sm:text-2xl font-bold mb-1 md:mb-2 transition-colors", step.color)}>
                                         {step.title}
                                     </h3>
-                                    <p className="text-gray-400 leading-relaxed">
+                                    <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
                                         {step.description}
                                     </p>
                                 </div>
@@ -117,7 +117,7 @@ export default function HowItWorks() {
                     </div>
 
                     {/* Right: Visual */}
-                    <div className="relative h-[400px] md:h-[500px] glass rounded-2xl p-8 flex items-center justify-center border border-gray-800">
+                    <div className="relative h-[250px] sm:h-[350px] md:h-[500px] glass rounded-2xl p-6 md:p-8 flex items-center justify-center border border-gray-800 scale-90 sm:scale-100 transition-transform">
                         {/* Animated Central Icon based on Step */}
                         <div className="relative z-10">
                             {steps.map((step, index) => {
@@ -135,8 +135,8 @@ export default function HowItWorks() {
                                         transition={{ duration: 0.5 }}
                                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                                     >
-                                        <div className={cn("p-12 rounded-full ring-4 ring-opacity-20 backdrop-blur-3xl", step.bg, `ring-${step.color.split('-')[1]}`)}>
-                                            <Icon className={cn("w-32 h-32", step.color)} />
+                                        <div className={cn("p-8 sm:p-12 rounded-full ring-4 ring-opacity-20 backdrop-blur-3xl", step.bg, `ring-${step.color.split('-')[1]}`)}>
+                                            <Icon className={cn("w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32", step.color)} />
                                         </div>
                                     </motion.div>
                                 );
@@ -144,7 +144,7 @@ export default function HowItWorks() {
                         </div>
 
                         {/* Background Grid/Effects */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
+                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:40px_40px] opacity-20" />
                         <div className="absolute inset-0 bg-gradient-to-br from-black via-transparent to-transparent opacity-80" />
                     </div>
 
