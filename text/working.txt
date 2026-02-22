@@ -1,0 +1,9 @@
+Detect. Verify. Allow.
+
+An IR sensor detects hand presence.
+Soap or sanitizer is dispensed automatically.
+The system confirms successful dispensing.
+
+Only then does the gateway unlock for 2–3 seconds.
+
+If no hygiene action is detected, access remains denied.

@@ -1,0 +1,10 @@
+Make hygiene mandatory.
+
+This system integrates touchless handwashing with automated access control.
+The gateway remains locked until sanitation is verified.
+
+No monitoring.
+No reminders.
+No bypassing.
+
+Only verified entry.

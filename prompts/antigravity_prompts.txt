@@ -1,0 +1,59 @@
+====================================
+ANTIGRAVITY SECTION REFINEMENT PROMPTS
+====================================
+
+
+GLOBAL STYLE UPGRADE
+------------------------------
+Enhance entire website with cinematic scroll storytelling, smooth parallax motion, glassmorphism UI panels, neon blue accent glow, premium minimal design, and immersive transitions between sections.
+
+
+HERO SECTION REFINEMENT
+------------------------------
+Make hero section dramatic and cinematic with slow zoom animation, floating particles representing microbes transforming into clean blue energy, glowing gateway sensors, and powerful entrance animation.
+
+
+PROBLEM SECTION REFINEMENT
+------------------------------
+Add darker tone with subtle infection particle motion in background. Create visual tension and urgency using lighting contrast and smooth fade transitions.
+
+
+SOLUTION SECTION REFINEMENT
+------------------------------
+Add glowing sensor activation effect and visual feedback when sanitation is verified. Include smooth transition from red warning tone to blue safe tone.
+
+
+HOW IT WORKS INTERACTION
+------------------------------
+Create step-by-step scroll interaction:
+1. Hand detected
+2. Sanitizer dispensed
+3. System verification
+4. Gateway unlocks
+
+Animate each stage sequentially as user scrolls.
+
+
+TECHNOLOGY SECTION REFINEMENT
+------------------------------
+Add subtle animated glowing circuit effects and floating data visualization lines. Emphasize engineering precision and intelligent automation.
+
+
+IMPACT SECTION REFINEMENT
+------------------------------
+Create transition where environment gradually becomes brighter and cleaner as user scrolls. Add hopeful lighting and smooth reveal animation.
+
+
+FUTURE VISION REFINEMENT
+------------------------------
+Add cinematic wide reveal animation with depth and subtle camera movement. Emphasize large-scale deployment in smart cities.
+
+
+INTERACTIVE GATE EFFECT
+------------------------------
+When user scrolls to sanitation verification section, simulate gateway unlocking animation with glowing edges and smooth mechanical motion.
+
+
+PREMIUM MICROINTERACTIONS
+------------------------------
+Add smooth hover effects on text elements, glowing button transitions, subtle floating animation for icons, and seamless section blending.

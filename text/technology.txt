@@ -1,0 +1,8 @@
+Built on intelligent automation.
+
+Arduino UNO controls the system logic.
+IR sensors detect hand presence.
+MG995 servo motor operates the physical gateway.
+Relay module and pump manage liquid dispensing.
+
+Sensor-based automation replaces human supervision.

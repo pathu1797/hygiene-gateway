@@ -1,0 +1,63 @@
+Create a high-end storytelling website for an engineering innovation project titled:
+
+"Mandatory Hygiene: The Integrated Handwashing Gateway"
+
+The website must feel cinematic, futuristic, and emotionally engaging. The storytelling flow must guide the viewer through the journey from problem to solution to impact.
+
+Website structure must include scroll-based storytelling sections:
+
+SECTION 1: HERO INTRO
+Visual: Futuristic hospital entrance with glowing automatic gateway.
+Headline: "What if hygiene wasn’t optional?"
+Subtext: "A system that enforces hand hygiene before entry."
+
+Animation: Smooth fade-in, floating particles representing microbes.
+
+SECTION 2: THE PROBLEM
+Visual: People entering hospital rooms ignoring sanitizer.
+Tone: serious, realistic.
+Headline: "Optional hygiene fails."
+Subtext: "Millions of infections spread due to non-compliance."
+
+Animation: Infection particles spreading visually.
+
+SECTION 3: THE IDEA
+Visual: Concept art of touchless handwashing system integrated with automatic gateway.
+Headline: "Make hygiene mandatory."
+Subtext: "Access control linked directly to sanitation."
+
+Animation: System diagram assembling piece by piece.
+
+SECTION 4: HOW IT WORKS
+Visual: IR sensor detects hands → liquid dispensed → gateway unlocks.
+Headline: "Detect. Verify. Allow."
+Animation: Step-by-step interactive animation.
+
+SECTION 5: TECHNOLOGY
+Visual: Arduino, sensors, servo motor, relay module, water pump.
+Headline: "Built with intelligent automation."
+
+SECTION 6: IMPACT
+Visual: Clean hospital environment, protected doctors and patients.
+Headline: "A safer future starts here."
+
+SECTION 7: TEAM
+Visual: Engineering students building prototype.
+Headline: "Engineered by future innovators."
+
+SECTION 8: FUTURE VISION
+Visual: Smart cities using automated hygiene gateways globally.
+Headline: "Redefining public health infrastructure."
+
+Design requirements:
+
+Use modern fonts
+Use smooth scroll animations
+Use glassmorphism UI
+Use dark futuristic theme with neon blue accents
+Use immersive visuals
+Use cinematic transitions
+
+Make it world-class level like Apple, Tesla, or NASA storytelling websites.
+
+No basic layouts. Must feel premium and cinematic.

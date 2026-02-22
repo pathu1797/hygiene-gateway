@@ -1,0 +1,49 @@
+==============================
+IMAGE PROMPTS FOR WEBSITE
+Project: Mandatory Hygiene Gateway
+==============================
+
+
+HERO IMAGE
+------------------------------
+Futuristic hospital entrance with integrated automatic hygiene gateway, glowing neon blue sensors, touchless handwashing station built into entry gate, cinematic lighting, volumetric light rays, ultra realistic, depth of field, modern architecture, 8k resolution, dramatic perspective, dark premium environment
+
+
+PROBLEM SECTION IMAGE
+------------------------------
+Hospital corridor where people walk past sanitizer dispensers without using them, subtle visualization of airborne microbes spreading in the air, cinematic realism, dramatic lighting, emotional tone, ultra detailed, 8k
+
+
+SOLUTION IMAGE
+------------------------------
+Touchless handwashing system integrated with automated gateway, glowing sensor detection effect, clean futuristic medical environment, high tech healthcare technology, cinematic lighting, ultra realistic, 8k
+
+
+HOW IT WORKS IMAGE
+------------------------------
+Step-by-step futuristic engineering diagram showing IR sensor detecting hands, automatic sanitizer dispensing, servo motor activating gateway, glowing data flow lines, minimal Apple-style technical visualization, ultra detailed, 8k
+
+
+TECHNOLOGY IMAGE
+------------------------------
+Arduino UNO connected to IR sensor, MG995 servo motor, 5V relay module and water pump, clean engineering setup, futuristic glowing circuit lines, dramatic dark background, ultra detailed, 8k resolution
+
+
+IMPACT IMAGE
+------------------------------
+Clean hospital environment with doctors and patients safe and protected, glowing hygiene gateway active at entrance, bright hopeful lighting, cinematic realism, ultra detailed, 8k
+
+
+FUTURE VISION IMAGE
+------------------------------
+Futuristic smart city with automated hygiene gateways at building entrances, advanced public health infrastructure, neon blue glow accents, cinematic wide angle shot, ultra realistic, 8k
+
+
+PROTOTYPE IMAGE (If using real product focus)
+------------------------------
+Close-up cinematic photograph of automatic touchless hygiene gateway prototype, Arduino board visible, sensors and wiring integrated, dark dramatic lighting, engineering innovation feel, ultra detailed, 8k
+
+
+LOGO GENERATION PROMPT
+------------------------------
+Minimal futuristic logo for "Mandatory Hygiene Gateway", abstract gateway symbol combined with hand icon, neon blue glow, modern tech vector design, dark background, clean and professional
