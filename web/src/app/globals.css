@@ -3,7 +3,7 @@
 :root {
   --background: #050505;
   --foreground: #ededed;
-  
+
   /* Custom colors */
   --neon-blue: #00f3ff;
   --neon-cyan: #00e5ff;
@@ -16,7 +16,7 @@
   --color-foreground: var(--foreground);
   --color-neon-blue: var(--neon-blue);
   --color-neon-cyan: var(--neon-cyan);
-  
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -26,8 +26,46 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
+  margin: 0;
   selection-background-color: var(--neon-blue);
   selection-color: #000;
+}
+
+/* Hero Section Responsiveness */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero img,
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-title {
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 15px;
+    height: 100vh;
+  }
 }
 
 /* Glassmorphism Utilities */
@@ -38,9 +76,9 @@ body {
 }
 
 @utility glass-card {
-  background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,13 +95,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neon-blue);
 }

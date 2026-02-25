@@ -17,7 +17,7 @@ export default function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative min-h-[100dvh] w-full overflow-hidden flex items-center justify-center bg-black py-20 px-6"
+            className="hero bg-black"
         >
             {/* Background with Parallax and Zoom */}
             <motion.div
@@ -28,7 +28,7 @@ export default function Hero() {
                 transition={{ duration: 10, ease: "easeOut" }}
             >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-900/50 via-black/90 to-black opacity-95 z-10" />
-                <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-70 mix-blend-overlay" />
+                <div className="hero-bg absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-70 mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
             </motion.div>
 
@@ -44,7 +44,7 @@ export default function Hero() {
                             Innovation in Public Health
                         </span>
                     </div>
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                    <h1 className="hero-title font-bold tracking-tight text-white mb-6 leading-[1.1]">
                         Hygiene, <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-cyan text-glow">
                             Enforced by Design
@@ -56,7 +56,7 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="text-base md:text-xl text-gray-100 max-w-2xl mx-auto leading-relaxed px-4"
+                    className="hero-subtitle text-gray-100 max-w-2xl mx-auto leading-relaxed px-4"
                 >
                     An intelligent gateway that ensures mandatory hand sanitation before entry.
                     <br className="hidden sm:block" />
