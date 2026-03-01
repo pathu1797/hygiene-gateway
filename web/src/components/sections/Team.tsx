@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { User, GraduationCap } from "lucide-react";
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 const teamMembers = [
     {
@@ -42,123 +42,241 @@ const teamMembers = [
 
 export default function Team() {
     return (
-        <section id="team" className="py-16 sm:py-24 px-6 relative overflow-hidden bg-black">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 space-y-4">
+        <section
+            id="team"
+            className="section"
+            style={{ background: "#030303", overflow: "hidden", position: "relative" }}
+        >
+            <div className="container">
+                {/* Header */}
+                <div style={{
+                    textAlign: "center",
+                    maxWidth: "48ch",
+                    margin: "0 auto",
+                    marginBottom: "clamp(32px, 6vw, 64px)",
+                }}>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl sm:text-4xl md:text-5xl font-bold"
+                        style={{
+                            fontSize: "clamp(1.8rem, 5vw, 3.2rem)",
+                            fontWeight: 800,
+                            lineHeight: 1.15,
+                            letterSpacing: "-0.025em",
+                            color: "#fff",
+                            marginBottom: "clamp(10px, 2vw, 16px)",
+                        }}
                     >
-                        Engineered by <span className="text-neon-blue text-glow">Future Innovators</span>
+                        Engineered by{" "}
+                        <span className="text-glow" style={{ color: "var(--neon-blue)" }}>
+                            Future Innovators
+                        </span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-gray-400 text-base sm:text-lg"
+                        style={{
+                            fontSize: "clamp(0.85rem, 2vw, 1rem)",
+                            color: "#6b7280",
+                            lineHeight: 1.7,
+                        }}
                     >
-                        Meet the team from Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering & Technology, Baramati.
+                        Meet the team from Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering &amp; Technology, Baramati.
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Team Grid */}
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))",
+                    gap: "clamp(14px, 2.5vw, 24px)",
+                }}>
                     {teamMembers.map((member, i) => (
-                        <motion.div
+                        <motion.article
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 28 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            whileHover={{
-                                y: -10,
-                                borderColor: "rgba(0, 243, 255, 0.3)",
-                                backgroundColor: "rgba(255, 255, 255, 0.01)"
-                            }}
                             viewport={{ once: true }}
-                            transition={{
-                                layout: { duration: 0.3 },
-                                delay: i * 0.1,
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 20
+                            transition={{ delay: i * 0.08, type: "spring", stiffness: 280, damping: 22 }}
+                            whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                            className="glass-card"
+                            style={{
+                                padding: "clamp(20px, 4vw, 32px)",
+                                borderRadius: 18,
+                                border: "1px solid rgba(255,255,255,0.08)",
+                                display: "flex",
+                                flexDirection: "column",
+                                position: "relative",
+                                overflow: "hidden",
+                                cursor: "default",
+                                transition: "border-color 0.25s ease",
                             }}
-                            className="glass p-6 sm:p-8 rounded-2xl border border-white/10 transition-colors group relative overflow-hidden flex flex-col"
+                            onMouseEnter={(e) => e.currentTarget.style.borderColor = "rgba(0,243,255,0.25)"}
+                            onMouseLeave={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"}
                         >
-                            <motion.div
-                                whileHover={{ opacity: 0.2 }}
-                                className="absolute top-0 right-0 p-4 opacity-10 transition-opacity"
-                            >
-                                <GraduationCap size={40} className="text-neon-blue" />
-                            </motion.div>
-
-                            <div className="relative w-20 h-20 sm:w-24 sm:h-24 mb-6">
-                                <motion.div
-                                    whileHover={{ backgroundColor: "rgba(0, 243, 255, 0.4)", scale: 1.15 }}
-                                    className="absolute inset-0 bg-neon-blue/20 rounded-full blur-md transition-all duration-300"
-                                />
-                                <motion.div
-                                    whileHover={{ borderColor: "rgba(0, 243, 255, 1)" }}
-                                    className="relative w-full h-full rounded-full border-2 border-neon-blue/40 overflow-hidden bg-black flex items-center justify-center transition-colors duration-300"
-                                >
-                                    {member.image ? (
-                                        <motion.div
-                                            className="relative w-full h-full"
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                        >
-                                            <Image
-                                                src={member.image}
-                                                alt={member.name}
-                                                fill
-                                                priority
-                                                className="object-cover object-center"
-                                            />
-                                        </motion.div>
-                                    ) : (
-                                        <User className="w-10 h-10 sm:w-12 sm:h-12 text-neon-blue/60" />
-                                    )}
-                                </motion.div>
+                            {/* Decorative cap icon */}
+                            <div style={{
+                                position: "absolute",
+                                top: 12,
+                                right: 12,
+                                opacity: 0.08,
+                                pointerEvents: "none",
+                            }}>
+                                <GraduationCap size={36} color="var(--neon-blue)" />
                             </div>
 
-                            <motion.h3
-                                whileHover={{ color: "#00f3ff" }}
-                                className="text-lg sm:text-xl font-black mb-1 text-white transition-colors tracking-tight"
-                            >
-                                {member.name}
-                            </motion.h3>
-                            <p className="text-neon-blue text-[10px] sm:text-xs font-black uppercase tracking-widest mb-4">{member.role}</p>
+                            {/* Avatar */}
+                            <div style={{
+                                position: "relative",
+                                width: "clamp(64px, 14vw, 88px)",
+                                height: "clamp(64px, 14vw, 88px)",
+                                marginBottom: "clamp(14px, 3vw, 22px)",
+                                flexShrink: 0,
+                            }}>
+                                {/* Glow ring */}
+                                <div style={{
+                                    position: "absolute",
+                                    inset: -4,
+                                    borderRadius: "50%",
+                                    background: "rgba(0,243,255,0.15)",
+                                    filter: "blur(8px)",
+                                }} />
+                                <div style={{
+                                    position: "relative",
+                                    width: "100%",
+                                    height: "100%",
+                                    borderRadius: "50%",
+                                    border: "2px solid rgba(0,243,255,0.35)",
+                                    overflow: "hidden",
+                                    background: "#000",
+                                }}>
+                                    {member.image ? (
+                                        <Image
+                                            src={member.image}
+                                            alt={`Photo of ${member.name}`}
+                                            fill
+                                            priority={i < 2}
+                                            style={{ objectFit: "cover", objectPosition: "center" }}
+                                        />
+                                    ) : (
+                                        <div style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                        }}>
+                                            <User style={{ width: 32, height: 32, color: "rgba(0,243,255,0.5)" }} />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
 
-                            <p className="text-gray-200 text-xs sm:text-sm leading-relaxed mb-6 flex-grow font-medium">
+                            {/* Name & role */}
+                            <h3 style={{
+                                fontSize: "clamp(0.95rem, 2.2vw, 1.1rem)",
+                                fontWeight: 800,
+                                color: "#fff",
+                                letterSpacing: "-0.02em",
+                                marginBottom: 4,
+                                lineHeight: 1.25,
+                            }}>
+                                {member.name}
+                            </h3>
+                            <p style={{
+                                fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
+                                fontWeight: 800,
+                                textTransform: "uppercase",
+                                letterSpacing: "0.14em",
+                                color: "var(--neon-blue)",
+                                marginBottom: "clamp(12px, 2.5vw, 18px)",
+                            }}>
+                                {member.role}
+                            </p>
+
+                            <p style={{
+                                fontSize: "clamp(0.78rem, 1.6vw, 0.9rem)",
+                                color: "#9ca3af",
+                                lineHeight: 1.65,
+                                flex: 1,
+                                marginBottom: "clamp(12px, 2.5vw, 18px)",
+                            }}>
                                 {member.description}
                             </p>
 
-                            <div className="pt-4 border-t border-white/10">
-                                <p className="text-gray-100 text-[10px] sm:text-xs font-semibold">{member.degree}</p>
-                                <p className="text-gray-400 text-[9px] sm:text-[10px] mt-1 uppercase tracking-widest font-bold">{member.year}</p>
+                            {/* Degree footer */}
+                            <div style={{
+                                paddingTop: "clamp(12px, 2.5vw, 16px)",
+                                borderTop: "1px solid rgba(255,255,255,0.07)",
+                            }}>
+                                <p style={{
+                                    fontSize: "clamp(0.7rem, 1.4vw, 0.8rem)",
+                                    color: "#e5e7eb",
+                                    fontWeight: 600,
+                                    marginBottom: 3,
+                                }}>
+                                    {member.degree}
+                                </p>
+                                <p style={{
+                                    fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
+                                    color: "#6b7280",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.12em",
+                                    fontWeight: 700,
+                                }}>
+                                    {member.year}
+                                </p>
                             </div>
-                        </motion.div>
+                        </motion.article>
                     ))}
                 </div>
 
-                <motion.div
+                {/* Institute note */}
+                <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.6 }}
-                    className="mt-16 text-center"
+                    transition={{ delay: 0.5 }}
+                    style={{
+                        textAlign: "center",
+                        marginTop: "clamp(32px, 6vw, 56px)",
+                        fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)",
+                        color: "#4b5563",
+                        fontStyle: "italic",
+                        lineHeight: 1.6,
+                        padding: "0 16px",
+                    }}
                 >
-                    <p className="text-gray-400 text-xs sm:text-sm italic px-4 font-medium">
-                        Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering & Technology, Baramati, Pune.
-                    </p>
-                </motion.div>
+                    Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering &amp; Technology, Baramati, Pune.
+                </motion.p>
             </div>
 
-            {/* Background glowing effects */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-neon-blue/5 rounded-full blur-[100px]" />
-                <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-neon-blue/5 rounded-full blur-[100px]" />
-            </div>
+            {/* Ambient glows */}
+            <div aria-hidden="true" style={{
+                position: "absolute",
+                top: "20%",
+                left: "-15%",
+                width: "min(400px, 50vw)",
+                height: "min(400px, 50vw)",
+                background: "rgba(0,243,255,0.04)",
+                filter: "blur(90px)",
+                borderRadius: "50%",
+                pointerEvents: "none",
+            }} />
+            <div aria-hidden="true" style={{
+                position: "absolute",
+                bottom: "20%",
+                right: "-15%",
+                width: "min(400px, 50vw)",
+                height: "min(400px, 50vw)",
+                background: "rgba(0,243,255,0.04)",
+                filter: "blur(90px)",
+                borderRadius: "50%",
+                pointerEvents: "none",
+            }} />
         </section>
     );
 }

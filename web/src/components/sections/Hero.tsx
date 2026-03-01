@@ -11,77 +11,191 @@ export default function Hero() {
         offset: ["start start", "end start"],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+    const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
     return (
         <section
             ref={containerRef}
-            className="hero bg-black"
+            className="hero-section bg-black"
+            style={{ zIndex: 1 }}
         >
-            {/* Background with Parallax and Zoom */}
+            {/* Background Parallax Layer */}
             <motion.div
-                style={{ y }}
-                className="absolute inset-0 z-0"
-                initial={{ scale: 1.1 }}
+                style={{ y: bgY }}
+                initial={{ scale: 1.08 }}
                 animate={{ scale: 1 }}
-                transition={{ duration: 10, ease: "easeOut" }}
+                transition={{ duration: 12, ease: "easeOut" }}
+                aria-hidden="true"
+                className="hero-bg-layer"
             >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-900/50 via-black/90 to-black opacity-95 z-10" />
-                <div className="hero-bg absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-70 mix-blend-overlay" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+                {/* Hero image */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    backgroundImage: "url('/hero.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    opacity: 0.55,
+                }} />
+                {/* Radial gradient overlay */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "radial-gradient(ellipse at center, rgba(0,20,30,0.4) 0%, rgba(5,5,5,0.92) 80%)",
+                    zIndex: 1,
+                }} />
+                {/* Bottom fade */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(to top, #050505 0%, transparent 60%)",
+                    zIndex: 2,
+                }} />
             </motion.div>
 
             {/* Content */}
-            <div className="relative z-10 text-center w-full max-w-4xl mx-auto space-y-8">
+            <motion.div
+                style={{ opacity: contentOpacity }}
+                className="hero-content container"
+            >
+                {/* Pill badge */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    transition={{ duration: 0.7, delay: 0.15 }}
+                    style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        padding: "6px 14px",
+                        marginBottom: "clamp(16px, 3vw, 24px)",
+                        border: "1px solid rgba(0,243,255,0.35)",
+                        borderRadius: 999,
+                        background: "rgba(0,243,255,0.1)",
+                        backdropFilter: "blur(8px)",
+                    }}
                 >
-                    <div className="inline-block px-3 py-1 mb-4 border border-neon-blue/40 rounded-full bg-neon-blue/15 backdrop-blur-md">
-                        <span className="text-[10px] md:text-xs tracking-[0.2em] font-semibold uppercase text-neon-blue">
-                            Innovation in Public Health
-                        </span>
-                    </div>
-                    <h1 className="hero-title font-bold tracking-tight text-white mb-6 leading-[1.1]">
-                        Hygiene, <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-cyan text-glow">
-                            Enforced by Design
-                        </span>
-                    </h1>
+                    <span style={{
+                        fontSize: "clamp(0.6rem, 1.5vw, 0.72rem)",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.2em",
+                        color: "var(--neon-blue)",
+                    }}>
+                        Innovation in Public Health
+                    </span>
                 </motion.div>
 
-                <motion.p
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="hero-subtitle text-gray-100 max-w-2xl mx-auto leading-relaxed px-4"
+                {/* Headline */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 28 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                    style={{
+                        fontSize: "clamp(2.2rem, 8vw, 4.5rem)",
+                        fontWeight: 900,
+                        lineHeight: 1.08,
+                        letterSpacing: "-0.03em",
+                        color: "#fff",
+                        marginBottom: "clamp(14px, 3vw, 24px)",
+                        maxWidth: "14ch",
+                        margin: "0 auto clamp(14px, 3vw, 24px)",
+                    }}
                 >
-                    An intelligent gateway that ensures mandatory hand sanitation before entry.
-                    <br className="hidden sm:block" />
-                    <span className="italic text-neon-blue font-semibold"> No compliance — no access.</span>
+                    Hygiene,{" "}
+                    <span className="gradient-text text-glow">
+                        Enforced by Design
+                    </span>
+                </motion.h1>
+
+                {/* Subtitle */}
+                <motion.p
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.55 }}
+                    style={{
+                        fontSize: "clamp(0.95rem, 2.5vw, 1.2rem)",
+                        color: "#d1d5db",
+                        maxWidth: "44ch",
+                        margin: "0 auto clamp(32px, 6vw, 56px)",
+                        lineHeight: 1.65,
+                        padding: "0 8px",
+                    }}
+                >
+                    An intelligent gateway that ensures mandatory hand sanitation before entry.{" "}
+                    <span style={{ color: "var(--neon-blue)", fontStyle: "italic", fontWeight: 600 }}>
+                        No compliance — no access.
+                    </span>
                 </motion.p>
 
-                <motion.div
+                {/* Scroll indicator */}
+                <motion.a
+                    href="#problem"
+                    aria-label="Scroll to explore"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="pt-10 flex justify-center"
+                    transition={{ duration: 1, delay: 1.1 }}
+                    style={{
+                        display: "inline-flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: 8,
+                        textDecoration: "none",
+                        color: "#9ca3af",
+                        minHeight: 44,
+                        justifyContent: "center",
+                    }}
                 >
                     <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        className="text-gray-300 flex flex-col items-center gap-2 cursor-pointer pb-10"
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}
                     >
-                        <span className="text-xs uppercase tracking-widest text-neon-blue font-bold">Explore</span>
-                        <ArrowDown className="w-5 h-5 text-neon-blue" />
+                        <span style={{
+                            fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.2em",
+                            fontWeight: 700,
+                            color: "var(--neon-blue)",
+                        }}>
+                            Explore
+                        </span>
+                        <ArrowDown style={{ width: 18, height: 18, color: "var(--neon-blue)" }} />
                     </motion.div>
-                </motion.div>
-            </div>
+                </motion.a>
+            </motion.div>
 
-            {/* Decorative Glows */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-neon-blue/20 blur-[130px] rounded-full pointer-events-none" />
+            {/* Ambient glow */}
+            <div aria-hidden="true" style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "min(700px, 90vw)",
+                height: "min(400px, 60vw)",
+                background: "rgba(0,243,255,0.12)",
+                filter: "blur(110px)",
+                borderRadius: "50%",
+                pointerEvents: "none",
+                zIndex: 0,
+            }} />
+
+            <style>{`
+                .hero-bg-layer {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 0;
+                }
+                .hero-content {
+                    position: relative;
+                    z-index: 10;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    width: 100%;
+                }
+            `}</style>
         </section>
     );
 }

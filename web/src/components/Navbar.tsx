@@ -1,11 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Copy, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
 
 const navItems = [
     { name: "Problem", href: "#problem" },
@@ -18,75 +15,263 @@ const navItems = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    // Close menu when clicking outside
+    useEffect(() => {
+        if (!isOpen) return;
+        const handler = (e: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        return () => document.removeEventListener("mousedown", handler);
+    }, [isOpen]);
+
+    // Prevent scroll when menu is open
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [isOpen]);
+
+    const handleNavClick = () => setIsOpen(false);
 
     return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
-        >
-            <div className="mx-auto max-w-7xl">
-                <div className="glass rounded-2xl px-6 py-3 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-                        <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10">
-                            <Image
-                                src="/logo.webp"
-                                alt="Hygiene Gateway Logo"
-                                fill
-                                className="object-contain"
-                            />
+        <>
+            <nav
+                role="navigation"
+                aria-label="Main navigation"
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 50,
+                    padding: "12px clamp(16px, 5vw, 48px)",
+                    transition: "background 0.3s ease, box-shadow 0.3s ease",
+                    background: scrolled ? "rgba(5,5,5,0.92)" : "transparent",
+                    backdropFilter: scrolled ? "blur(14px)" : "none",
+                    WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+                    boxShadow: scrolled ? "0 1px 0 rgba(255,255,255,0.07)" : "none",
+                }}
+            >
+                <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    maxWidth: "1200px",
+                    margin: "0 auto",
+                }}>
+                    {/* Logo */}
+                    <Link
+                        href="/"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            textDecoration: "none",
+                            flexShrink: 0,
+                        }}
+                    >
+                        <div style={{ position: "relative", width: 36, height: 36, flexShrink: 0 }}>
+                            <Image src="/logo.webp" alt="Hygiene Gateway Logo" fill style={{ objectFit: "contain" }} />
                         </div>
-                        <div className="text-lg sm:text-xl font-bold tracking-tighter flex items-center gap-1.5 sm:gap-2">
-                            <span className="text-neon-blue">HYGIENE</span>
-                            <span className="text-white group-hover:text-glow transition-all">GATEWAY</span>
-                        </div>
+                        <span style={{
+                            fontSize: "clamp(0.9rem, 2.5vw, 1.15rem)",
+                            fontWeight: 800,
+                            letterSpacing: "-0.03em",
+                            lineHeight: 1,
+                        }}>
+                            <span style={{ color: "var(--neon-blue)" }}>HYGIENE</span>
+                            <span style={{ color: "#fff" }}> GATEWAY</span>
+                        </span>
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div style={{
+                        display: "none",
+                        alignItems: "center",
+                        gap: "clamp(16px, 2.5vw, 36px)",
+                    }} className="desktop-nav">
                         {navItems.map((item) => (
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-sm text-gray-400 hover:text-neon-blue transition-colors uppercase tracking-widest relative group"
+                                style={{
+                                    fontSize: "0.75rem",
+                                    fontWeight: 700,
+                                    color: "#9ca3af",
+                                    textDecoration: "none",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.12em",
+                                    transition: "color 0.2s",
+                                    padding: "8px 0",
+                                    minHeight: 44,
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--neon-blue)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = "#9ca3af")}
                             >
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-blue transition-all group-hover:w-full" />
                             </Link>
                         ))}
                     </div>
 
-                    {/* Mobile Toggle */}
+                    {/* Hamburger Button - mobile only */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-white hover:text-neon-blue transition-colors"
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
+                        className="hamburger-btn"
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 5,
+                            padding: "10px",
+                            background: "transparent",
+                            border: "none",
+                            cursor: "pointer",
+                            minWidth: 44,
+                            minHeight: 44,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: 8,
+                        }}
                     >
-                        {isOpen ? <X /> : <Menu />}
+                        <span style={{
+                            display: "block",
+                            width: 22,
+                            height: 2,
+                            background: "#fff",
+                            borderRadius: 2,
+                            transition: "transform 0.25s ease, opacity 0.25s ease",
+                            transform: isOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
+                        }} />
+                        <span style={{
+                            display: "block",
+                            width: 22,
+                            height: 2,
+                            background: "#fff",
+                            borderRadius: 2,
+                            transition: "opacity 0.25s ease",
+                            opacity: isOpen ? 0 : 1,
+                        }} />
+                        <span style={{
+                            display: "block",
+                            width: 22,
+                            height: 2,
+                            background: "#fff",
+                            borderRadius: 2,
+                            transition: "transform 0.25s ease, opacity 0.25s ease",
+                            transform: isOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
+                        }} />
                     </button>
                 </div>
+            </nav>
 
-                {/* Mobile Menu */}
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden absolute top-20 left-6 right-6 glass rounded-2xl p-6 flex flex-col gap-4"
+            {/* Mobile Menu Overlay */}
+            {isOpen && (
+                <div
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        background: "rgba(0,0,0,0.6)",
+                        zIndex: 40,
+                        backdropFilter: "blur(4px)",
+                        WebkitBackdropFilter: "blur(4px)",
+                    }}
+                    aria-hidden="true"
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
+            <div
+                id="mobile-menu"
+                ref={menuRef}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Mobile menu"
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    width: "min(280px, 85vw)",
+                    background: "#0c0c0c",
+                    borderLeft: "1px solid rgba(255,255,255,0.08)",
+                    zIndex: 49,
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "80px 24px 40px",
+                    gap: 4,
+                    transform: isOpen ? "translateX(0)" : "translateX(100%)",
+                    transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    overflowY: "auto",
+                }}
+                className="mobile-menu-panel"
+            >
+                {navItems.map((item) => (
+                    <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={handleNavClick}
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            minHeight: 52,
+                            padding: "12px 16px",
+                            fontSize: "1rem",
+                            fontWeight: 600,
+                            color: "#d1d5db",
+                            textDecoration: "none",
+                            borderRadius: 10,
+                            transition: "color 0.2s, background 0.2s",
+                            letterSpacing: "-0.01em",
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "var(--neon-blue)";
+                            e.currentTarget.style.background = "rgba(0,243,255,0.06)";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#d1d5db";
+                            e.currentTarget.style.background = "transparent";
+                        }}
                     >
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="text-lg text-gray-300 hover:text-neon-blue transition-colors"
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
-                    </motion.div>
-                )}
+                        {item.name}
+                    </Link>
+                ))}
+
+                <div style={{
+                    marginTop: "auto",
+                    paddingTop: 24,
+                    borderTop: "1px solid rgba(255,255,255,0.07)",
+                    fontSize: "0.7rem",
+                    color: "#4b5563",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    fontWeight: 700,
+                }}>
+                    <span style={{ color: "var(--neon-blue)" }}>Hygiene</span> Gateway
+                </div>
             </div>
-        </motion.nav>
+
+            {/* Styles to show/hide desktop nav */}
+            <style>{`
+                @media (min-width: 768px) {
+                    .desktop-nav { display: flex !important; }
+                    .hamburger-btn { display: none !important; }
+                    .mobile-menu-panel { display: none !important; }
+                }
+            `}</style>
+        </>
     );
 }

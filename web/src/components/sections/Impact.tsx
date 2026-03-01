@@ -13,50 +13,108 @@ const stats = [
 
 export default function Impact() {
     return (
-        <section id="impact" className="py-16 sm:py-24 px-6 bg-white text-black relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
+        <section
+            id="impact"
+            className="section"
+            style={{ background: "#fff", color: "#111", position: "relative", overflow: "hidden" }}
+        >
+            <div className="container">
+                <div className="grid-2col">
 
+                    {/* Text */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-6 z-10 text-center md:text-left"
+                        transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                            A New Standard for <br className="hidden sm:block" />
-                            <span className="text-neon-blue">Hygiene Infrastructure</span>
+                        <h2 style={{
+                            fontSize: "clamp(1.75rem, 5vw, 3.2rem)",
+                            fontWeight: 800,
+                            lineHeight: 1.15,
+                            letterSpacing: "-0.025em",
+                            color: "#111",
+                            marginBottom: "clamp(14px, 3vw, 22px)",
+                        }}>
+                            A New Standard for{" "}
+                            <span style={{ color: "var(--neon-blue)" }}>Hygiene Infrastructure</span>
                         </h2>
-                        <p className="text-gray-800 text-base sm:text-lg leading-relaxed font-medium">
+                        <p style={{
+                            fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
+                            color: "#374151",
+                            lineHeight: 1.75,
+                            marginBottom: "clamp(12px, 2.5vw, 18px)",
+                        }}>
                             Reduces hospital-acquired infections. Improves compliance. Minimizes waste.
                             Protects healthcare professionals and patients alike.
                         </p>
-                        <p className="text-sm sm:text-base text-gray-900 font-bold">
+                        <p style={{
+                            fontSize: "clamp(0.88rem, 1.8vw, 1rem)",
+                            color: "#111",
+                            fontWeight: 700,
+                        }}>
                             Designed not only for today — but for future pandemics.
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Stats grid */}
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "clamp(12px, 2vw, 18px)",
+                    }}>
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.92 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                whileHover={{ scale: 1.05 }}
+                                viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="bg-white p-6 rounded-2xl border border-gray-200 hover:border-neon-blue/50 transition-colors shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
+                                whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}
+                                className="stat-card"
                             >
-                                <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-neon-blue mb-2" />
-                                <h3 className="text-2xl sm:text-3xl font-black text-gray-900">{stat.value}</h3>
-                                <p className="text-xs sm:text-sm text-gray-700 font-bold uppercase tracking-widest">{stat.label}</p>
+                                <stat.icon style={{
+                                    width: "clamp(22px, 4vw, 32px)",
+                                    height: "clamp(22px, 4vw, 32px)",
+                                    color: "var(--neon-blue)",
+                                    marginBottom: "clamp(8px, 1.5vw, 12px)",
+                                }} />
+                                <p style={{
+                                    fontSize: "clamp(1.5rem, 4vw, 2.2rem)",
+                                    fontWeight: 900,
+                                    color: "#111",
+                                    lineHeight: 1.1,
+                                    letterSpacing: "-0.02em",
+                                    marginBottom: 4,
+                                }}>
+                                    {stat.value}
+                                </p>
+                                <p style={{
+                                    fontSize: "clamp(0.6rem, 1.3vw, 0.72rem)",
+                                    fontWeight: 700,
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.1em",
+                                    color: "#374151",
+                                }}>
+                                    {stat.label}
+                                </p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gray-100 to-transparent skew-x-12" />
+            {/* Decorative shape */}
+            <div aria-hidden="true" style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                width: "30%",
+                height: "100%",
+                background: "linear-gradient(to left, #f3f4f6, transparent)",
+                transform: "skewX(-8deg) translateX(20%)",
+                pointerEvents: "none",
+            }} />
         </section>
     );
 }

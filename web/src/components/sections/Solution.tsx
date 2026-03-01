@@ -11,85 +11,168 @@ export default function Solution() {
         offset: ["start end", "end start"],
     });
 
-    const opacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
-    const y = useTransform(scrollYProgress, [0.1, 0.3], [50, 0]);
+    const opacity = useTransform(scrollYProgress, [0.05, 0.25], [0, 1]);
+    const y = useTransform(scrollYProgress, [0.05, 0.25], [40, 0]);
+    const xLeft = useTransform(scrollYProgress, [0.05, 0.25], [-40, 0]);
+
+    const features = [
+        "No monitoring required.",
+        "No reminders needed.",
+        "No bypassing possible.",
+    ];
 
     return (
         <section
             id="solution"
             ref={containerRef}
-            className="max-w-7xl mx-auto px-6 py-16 sm:py-24 min-h-[100dvh] flex items-center justify-center relative"
+            className="section"
+            style={{ background: "#030303" }}
         >
-            <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div className="container">
+                {/* On mobile: visual first, text second. On desktop: visual left, text right */}
+                <div className="grid-2col">
 
-                {/* Visual / Image Placeholder (Left on desktop) */}
-                <motion.div
-                    style={{ opacity, x: useTransform(scrollYProgress, [0.1, 0.3], [-50, 0]) }}
-                    className="relative h-[300px] sm:h-[400px] md:h-[600px] rounded-2xl overflow-hidden glass-card order-2 md:order-1 group"
-                >
-                    <div className="absolute inset-0 bg-neon-blue/5 z-10" />
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover opacity-80"
-                    >
-                        <source src="/access.mp4" type="video/mp4" />
-                    </video>
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-neon-blue/20 to-transparent opacity-50 z-20" />
-
-                    {/* Scanning Line Animation */}
+                    {/* Visual — appears first on mobile, left on desktop */}
                     <motion.div
-                        animate={{ top: ["0%", "100%", "0%"] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                        className="absolute left-0 right-0 h-[2px] bg-neon-blue shadow-[0_0_20px_rgba(0,243,255,0.8)] z-30"
-                    />
+                        style={{ opacity, x: xLeft }}
+                        className="glass-card media-visual"
+                    >
+                        <div style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "rgba(0,243,255,0.04)",
+                            zIndex: 1,
+                        }} />
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            style={{
+                                position: "absolute",
+                                inset: 0,
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                            }}
+                        >
+                            <source src="/access.mp4" type="video/mp4" />
+                        </video>
 
-                    <div className="absolute bottom-6 left-6 z-30">
-                        <div className="flex items-center gap-2 text-neon-blue">
-                            <ShieldCheck className="w-5 h-5 flex-shrink-0" />
-                            <p className="text-xs sm:text-sm font-black font-mono tracking-widest uppercase">ACCESS GRANTED</p>
+                        {/* Gradient overlay */}
+                        <div style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "linear-gradient(to top, rgba(0,243,255,0.15), transparent)",
+                            opacity: 0.5,
+                            zIndex: 2,
+                        }} />
+
+                        {/* Scanning line */}
+                        <motion.div
+                            animate={{ top: ["0%", "100%", "0%"] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                            style={{
+                                position: "absolute",
+                                left: 0,
+                                right: 0,
+                                height: 2,
+                                background: "var(--neon-blue)",
+                                boxShadow: "0 0 16px rgba(0,243,255,0.8)",
+                                zIndex: 5,
+                            }}
+                        />
+
+                        <div style={{
+                            position: "absolute",
+                            bottom: "clamp(16px, 3vw, 24px)",
+                            left: "clamp(16px, 3vw, 24px)",
+                            zIndex: 6,
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 8,
+                        }}>
+                            <ShieldCheck style={{ width: 16, height: 16, color: "var(--neon-blue)", flexShrink: 0 }} />
+                            <span className="text-caption" style={{ color: "var(--neon-blue)" }}>ACCESS GRANTED</span>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
 
-                {/* Text Content */}
-                <motion.div style={{ opacity, y }} className="space-y-6 z-10 order-1 md:order-2 text-left">
-                    <div className="flex items-center gap-2 text-neon-blue mb-4">
-                        <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm font-bold tracking-widest uppercase">The Solution</span>
-                    </div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                        Transform hygiene from <br className="hidden sm:block" />
-                        optional to <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-cyan text-glow">mandatory.</span>
-                    </h2>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
-                        Integrate touchless sanitation with automated gateway access control.
-                        The gateway remains <span className="text-white font-semibold">physically locked</span> until sanitation is verified by sensors.
-                    </p>
+                    {/* Text Content */}
+                    <motion.div style={{ opacity, y }}>
+                        <div className="section-label" style={{ color: "var(--neon-blue)", marginBottom: "clamp(12px, 2.5vw, 20px)" }}>
+                            <CheckCircle style={{ width: 16, height: 16, flexShrink: 0 }} />
+                            The Solution
+                        </div>
 
-                    <ul className="space-y-4 pt-4">
-                        {["No monitoring required.", "No reminders needed.", "No bypassing possible."].map((item, i) => (
-                            <motion.li
-                                key={i}
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.2 + (i * 0.1) }}
-                                className="flex items-center gap-3 text-gray-100 text-sm sm:text-base font-medium"
-                            >
-                                <div className="w-1.5 h-1.5 rounded-full bg-neon-blue shadow-[0_0_10px_#00f3ff] flex-shrink-0" />
-                                {item}
-                            </motion.li>
-                        ))}
-                    </ul>
-                </motion.div>
+                        <h2 style={{
+                            fontSize: "clamp(1.75rem, 5vw, 3.2rem)",
+                            fontWeight: 800,
+                            lineHeight: 1.15,
+                            letterSpacing: "-0.025em",
+                            color: "#fff",
+                            marginBottom: "clamp(16px, 3vw, 24px)",
+                        }}>
+                            Transform hygiene from optional to{" "}
+                            <span className="gradient-text text-glow">mandatory.</span>
+                        </h2>
 
+                        <p style={{
+                            fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
+                            color: "#d1d5db",
+                            lineHeight: 1.75,
+                            marginBottom: "clamp(20px, 4vw, 32px)",
+                        }}>
+                            Integrate touchless sanitation with automated gateway access control.
+                            The gateway remains <strong style={{ color: "#fff" }}>physically locked</strong>{" "}
+                            until sanitation is verified by sensors.
+                        </p>
+
+                        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
+                            {features.map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    initial={{ opacity: 0, x: 16 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.15 + i * 0.1 }}
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 12,
+                                        fontSize: "clamp(0.85rem, 1.8vw, 1rem)",
+                                        color: "#e5e7eb",
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    <span style={{
+                                        width: 8,
+                                        height: 8,
+                                        borderRadius: "50%",
+                                        background: "var(--neon-blue)",
+                                        boxShadow: "0 0 8px rgba(0,243,255,0.7)",
+                                        flexShrink: 0,
+                                    }} />
+                                    {item}
+                                </motion.li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                </div>
             </div>
 
-            {/* Decorative Background Glow (Blue) */}
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-neon-blue/5 blur-[100px] rounded-full pointer-events-none" />
+            {/* Ambient glow */}
+            <div aria-hidden="true" style={{
+                position: "absolute",
+                top: "50%",
+                left: "-10%",
+                transform: "translateY(-50%)",
+                width: "min(500px, 60vw)",
+                height: "min(500px, 60vw)",
+                background: "rgba(0,243,255,0.04)",
+                filter: "blur(90px)",
+                borderRadius: "50%",
+                pointerEvents: "none",
+            }} />
         </section>
     );
 }

@@ -1,38 +1,37 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { Hand, Droplets, ShieldCheck, LockOpen } from "lucide-react";
 import React, { useRef, useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
 
 const steps = [
     {
         icon: Hand,
         title: "Detect",
         description: "An IR sensor detects hand presence within the sanitation zone.",
-        color: "text-neon-blue",
-        bg: "bg-neon-blue/10",
+        color: "var(--neon-blue)",
+        bg: "rgba(0,243,255,0.1)",
     },
     {
         icon: Droplets,
         title: "Dispense",
         description: "Soap or sanitizer is dispensed automatically. The system confirms successful dispensing.",
-        color: "text-neon-cyan",
-        bg: "bg-neon-cyan/10",
+        color: "var(--neon-cyan)",
+        bg: "rgba(0,229,255,0.1)",
     },
     {
         icon: ShieldCheck,
         title: "Verify",
         description: "If no hygiene action is detected, access remains denied.",
-        color: "text-green-400",
-        bg: "bg-green-400/10",
+        color: "#4ade80",
+        bg: "rgba(74,222,128,0.1)",
     },
     {
         icon: LockOpen,
         title: "Allow",
         description: "Only after verification does the gateway unlock for 2–3 seconds.",
-        color: "text-white",
-        bg: "bg-white/10",
+        color: "#ffffff",
+        bg: "rgba(255,255,255,0.08)",
     },
 ];
 
@@ -45,109 +44,193 @@ export default function HowItWorks() {
         offset: ["start start", "end end"],
     });
 
-    // Update active step based on scroll
     useEffect(() => {
         const unsubscribe = scrollYProgress.on("change", (latest) => {
-            const step = Math.min(
-                steps.length - 1,
-                Math.floor(latest * steps.length)
-            );
+            const step = Math.min(steps.length - 1, Math.floor(latest * steps.length));
             setActiveStep(step);
         });
         return () => unsubscribe();
     }, [scrollYProgress]);
 
+    const ActiveIcon = steps[activeStep].icon;
+
     return (
         <section
             id="how-it-works"
             ref={containerRef}
-            className="relative h-[300vh] bg-black"
+            style={{ position: "relative", height: "300vh", background: "#050505" }}
         >
-            <div className="sticky top-0 min-h-[100dvh] w-full flex items-center justify-center overflow-hidden py-12 md:py-0">
+            {/* Sticky panel */}
+            <div style={{
+                position: "sticky",
+                top: 0,
+                width: "100%",
+                minHeight: "100svh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                padding: "clamp(80px, 10vw, 120px) 0 clamp(40px, 6vw, 64px)",
+            }}>
+                <div className="container">
+                    <div className="grid-2col">
 
-                <div className="max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-
-                    {/* Left: Text Content & Steps */}
-                    <div className="space-y-8 md:space-y-12">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                                Detect. Verify. <span className="text-neon-blue">Allow.</span>
-                            </h2>
-                            <p className="text-gray-400 text-base md:text-lg">
-                                A seamless sequential process ensures compliance without delay.
-                            </p>
-                        </motion.div>
-
-                        <div className="space-y-6 md:space-y-8 relative">
-                            {/* Vertical Line */}
-                            <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gray-800" />
+                        {/* Left: Text + Steps */}
+                        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(24px, 4vw, 40px)" }}>
                             <motion.div
-                                className="absolute left-6 top-0 w-[2px] bg-neon-blue shadow-[0_0_10px_#00f3ff]"
-                                style={{ height: `${((activeStep) / (steps.length - 1)) * 100}%`, transition: 'height 0.5s ease' }}
-                            />
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <h2 style={{
+                                    fontSize: "clamp(1.6rem, 4.5vw, 3rem)",
+                                    fontWeight: 800,
+                                    lineHeight: 1.15,
+                                    letterSpacing: "-0.025em",
+                                    color: "#fff",
+                                    marginBottom: "clamp(10px, 2vw, 16px)",
+                                }}>
+                                    Detect. Verify.{" "}
+                                    <span style={{ color: "var(--neon-blue)" }}>Allow.</span>
+                                </h2>
+                                <p style={{
+                                    fontSize: "clamp(0.88rem, 1.8vw, 1.05rem)",
+                                    color: "#6b7280",
+                                    lineHeight: 1.65,
+                                }}>
+                                    A seamless sequential process ensures compliance without delay.
+                                </p>
+                            </motion.div>
 
-                            {steps.map((step, index) => (
+                            {/* Step list */}
+                            <div style={{ position: "relative", paddingLeft: "clamp(28px, 5vw, 40px)" }}>
+                                {/* Track line */}
+                                <div className="step-line" />
+                                {/* Progress fill */}
                                 <div
-                                    key={index}
-                                    className={cn(
-                                        "relative pl-12 sm:pl-16 transition-opacity duration-500",
-                                        index === activeStep ? "opacity-100" : "opacity-30"
-                                    )}
-                                >
-                                    <div className={cn(
-                                        "absolute left-3 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 transition-colors duration-500 bg-black z-10 flex items-center justify-center",
-                                        index <= activeStep ? "border-neon-blue shadow-[0_0_10px_#00f3ff]" : "border-gray-700"
-                                    )}>
-                                        {index <= activeStep && <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neon-blue" />}
-                                    </div>
+                                    className="step-line"
+                                    style={{
+                                        background: "var(--neon-blue)",
+                                        boxShadow: "0 0 8px rgba(0,243,255,0.6)",
+                                        height: `${(activeStep / (steps.length - 1)) * 100}%`,
+                                        transition: "height 0.5s ease",
+                                        bottom: "auto",
+                                    }}
+                                />
 
-                                    <h3 className={cn("text-xl sm:text-2xl font-black mb-1 md:mb-2 transition-colors tracking-tight", step.color)}>
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-gray-200 text-sm sm:text-base leading-relaxed font-medium">
-                                        {step.description}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "clamp(20px, 4vw, 32px)" }}>
+                                    {steps.map((step, index) => (
+                                        <div
+                                            key={index}
+                                            style={{
+                                                opacity: index === activeStep ? 1 : 0.28,
+                                                transition: "opacity 0.4s ease",
+                                            }}
+                                        >
+                                            {/* Step dot */}
+                                            <div style={{
+                                                position: "absolute",
+                                                left: "clamp(4px, 1vw, 7px)",
+                                                width: "clamp(16px, 2.5vw, 20px)",
+                                                height: "clamp(16px, 2.5vw, 20px)",
+                                                borderRadius: "50%",
+                                                border: `2px solid ${index <= activeStep ? "var(--neon-blue)" : "#374151"}`,
+                                                boxShadow: index <= activeStep ? "0 0 8px rgba(0,243,255,0.5)" : "none",
+                                                background: "#050505",
+                                                zIndex: 1,
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                transition: "border-color 0.4s ease, box-shadow 0.4s ease",
+                                            }}>
+                                                {index <= activeStep && (
+                                                    <div style={{
+                                                        width: 6,
+                                                        height: 6,
+                                                        borderRadius: "50%",
+                                                        background: "var(--neon-blue)",
+                                                    }} />
+                                                )}
+                                            </div>
 
-                    {/* Right: Visual */}
-                    <div className="relative h-[250px] sm:h-[350px] md:h-[500px] glass rounded-2xl p-6 md:p-8 flex items-center justify-center border border-white/10 scale-90 sm:scale-100 transition-transform">
-                        {/* Animated Central Icon based on Step */}
-                        <div className="relative z-10">
-                            {steps.map((step, index) => {
-                                const Icon = step.icon;
-                                return (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, scale: 0.8, rotate: -20 }}
-                                        animate={{
-                                            opacity: index === activeStep ? 1 : 0,
-                                            scale: index === activeStep ? 1 : 0.8,
-                                            rotate: index === activeStep ? 0 : 20,
-                                            display: index === activeStep ? "block" : "none"
-                                        }}
-                                        transition={{ duration: 0.5 }}
-                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                                    >
-                                        <div className={cn("p-8 sm:p-12 rounded-full ring-8 ring-opacity-40 backdrop-blur-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]", step.bg, `ring-${step.color.split('-')[1]}`)}>
-                                            <Icon className={cn("w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32", step.color)} />
+                                            <h3 style={{
+                                                fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
+                                                fontWeight: 800,
+                                                color: step.color,
+                                                letterSpacing: "-0.02em",
+                                                marginBottom: 6,
+                                            }}>
+                                                {step.title}
+                                            </h3>
+                                            <p style={{
+                                                fontSize: "clamp(0.82rem, 1.6vw, 0.95rem)",
+                                                color: "#d1d5db",
+                                                lineHeight: 1.65,
+                                                fontWeight: 500,
+                                            }}>
+                                                {step.description}
+                                            </p>
                                         </div>
-                                    </motion.div>
-                                );
-                            })}
+                                    ))}
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Background Grid/Effects */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:40px_40px] opacity-20" />
-                        <div className="absolute inset-0 bg-gradient-to-br from-black via-transparent to-transparent opacity-80" />
-                    </div>
+                        {/* Right: Icon Showcase */}
+                        <div style={{
+                            position: "relative",
+                            borderRadius: 20,
+                            overflow: "hidden",
+                            aspectRatio: "1 / 1",
+                            maxHeight: "min(420px, 55vw)",
+                            margin: "0 auto",
+                            width: "100%",
+                            background: "rgba(255,255,255,0.02)",
+                            border: "1px solid rgba(255,255,255,0.08)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}>
+                            {/* Grid bg */}
+                            <div style={{
+                                position: "absolute",
+                                inset: 0,
+                                backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                                backgroundSize: "32px 32px",
+                                opacity: 0.3,
+                            }} />
 
+                            {/* Active icon */}
+                            <motion.div
+                                key={activeStep}
+                                initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                exit={{ opacity: 0, scale: 0.8, rotate: 15 }}
+                                transition={{ duration: 0.45, ease: "easeOut" }}
+                                style={{
+                                    position: "relative",
+                                    zIndex: 2,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <div style={{
+                                    padding: "clamp(24px, 5vw, 48px)",
+                                    borderRadius: "50%",
+                                    background: steps[activeStep].bg,
+                                    boxShadow: `0 0 40px ${steps[activeStep].color}33, 0 0 80px ${steps[activeStep].color}1a`,
+                                    backdropFilter: "blur(12px)",
+                                }}>
+                                    <ActiveIcon style={{
+                                        width: "clamp(48px, 10vw, 96px)",
+                                        height: "clamp(48px, 10vw, 96px)",
+                                        color: steps[activeStep].color,
+                                    }} />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

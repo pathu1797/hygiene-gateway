@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 
@@ -8,27 +10,102 @@ const teamContacts = [
     { name: "Atharv Vijay Patil", email: "atharv.patil.comp.25@vpkbiet.org", phone: "+91 8407990628" },
 ];
 
+const footerLinks = [
+    { label: "Privacy Policy", href: "/privacy.pdf", external: true },
+    { label: "Terms of Use", href: "/termsofuse.pdf", external: true },
+    { label: "About Us", href: "#team", external: false },
+    {
+        label: "Feedback",
+        href: "https://docs.google.com/forms/d/e/1FAIpQLSdXjH5dZ1kygninccKuD2vLg8u8wzj74A2-B5X6tHVUIDtcqA/viewform?usp=publish-editor",
+        external: true,
+        highlight: true,
+    },
+];
+
 export default function Footer() {
     return (
-        <footer className="bg-black text-gray-300 py-20 px-6 border-t border-white/10">
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 mb-16">
+        <footer style={{
+            background: "#000",
+            color: "#9ca3af",
+            borderTop: "1px solid rgba(255,255,255,0.07)",
+            paddingTop: "clamp(40px, 8vw, 80px)",
+            paddingBottom: "clamp(24px, 5vw, 48px)",
+        }}>
+            <div className="container">
+
+                {/* Team contacts grid */}
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(min(220px, 100%), 1fr))",
+                    gap: "clamp(10px, 2vw, 16px)",
+                    marginBottom: "clamp(32px, 6vw, 56px)",
+                }}>
                     {teamContacts.map((contact, i) => (
-                        <div key={i} className="space-y-3 p-4 rounded-xl border border-white/10 hover:border-neon-blue/40 transition-all group bg-white/0 hover:bg-white/[0.02]">
-                            <h4 className="text-white font-black text-sm tracking-tight group-hover:text-neon-blue transition-colors">
+                        <div
+                            key={i}
+                            style={{
+                                padding: "clamp(14px, 2.5vw, 20px)",
+                                borderRadius: 12,
+                                border: "1px solid rgba(255,255,255,0.08)",
+                                background: "rgba(255,255,255,0)",
+                                transition: "border-color 0.2s, background 0.2s",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor = "rgba(0,243,255,0.25)";
+                                e.currentTarget.style.background = "rgba(255,255,255,0.015)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                                e.currentTarget.style.background = "rgba(255,255,255,0)";
+                            }}
+                        >
+                            <h4 style={{
+                                fontSize: "clamp(0.8rem, 1.8vw, 0.9rem)",
+                                fontWeight: 700,
+                                color: "#fff",
+                                letterSpacing: "-0.01em",
+                                marginBottom: "clamp(8px, 1.5vw, 12px)",
+                                lineHeight: 1.3,
+                            }}>
                                 {contact.name}
                             </h4>
-                            <div className="space-y-1">
+                            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
                                 <a
                                     href={`mailto:${contact.email}`}
-                                    className="block text-xs text-gray-400 hover:text-neon-blue transition-colors truncate font-medium"
                                     title={contact.email}
+                                    style={{
+                                        fontSize: "clamp(0.65rem, 1.3vw, 0.75rem)",
+                                        color: "#6b7280",
+                                        textDecoration: "none",
+                                        fontWeight: 500,
+                                        display: "block",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        transition: "color 0.2s",
+                                        minHeight: 28,
+                                        lineHeight: "28px",
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.color = "var(--neon-blue)"}
+                                    onMouseLeave={(e) => e.currentTarget.style.color = "#6b7280"}
                                 >
                                     {contact.email}
                                 </a>
                                 <a
-                                    href={`tel:${contact.phone.replace(/\s+/g, '')}`}
-                                    className="block text-xs text-gray-400 hover:text-neon-blue transition-colors font-medium"
+                                    href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                                    style={{
+                                        fontSize: "clamp(0.65rem, 1.3vw, 0.75rem)",
+                                        color: "#6b7280",
+                                        textDecoration: "none",
+                                        fontWeight: 500,
+                                        transition: "color 0.2s",
+                                        minHeight: 28,
+                                        lineHeight: "28px",
+                                        display: "flex",
+                                        alignItems: "center",
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.color = "var(--neon-blue)"}
+                                    onMouseLeave={(e) => e.currentTarget.style.color = "#6b7280"}
                                 >
                                     {contact.phone}
                                 </a>
@@ -37,45 +114,88 @@ export default function Footer() {
                     ))}
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center gap-12 md:gap-8 pt-8 border-t border-white/10">
-                    <div className="text-center md:text-left">
-                        <h3 className="text-white font-black text-lg mb-1 tracking-tighter">
-                            <span className="text-neon-blue">HYGIENE</span> GATEWAY
-                        </h3>
-                        <p className="text-[10px] uppercase tracking-widest text-gray-400 font-black">Innovation for a Safer Tomorrow.</p>
+                {/* Bottom bar */}
+                <div style={{
+                    paddingTop: "clamp(20px, 4vw, 32px)",
+                    borderTop: "1px solid rgba(255,255,255,0.07)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "clamp(16px, 3vw, 24px)",
+                    textAlign: "center",
+                }}>
+                    {/* Brand */}
+                    <div>
+                        <p style={{
+                            fontSize: "clamp(1rem, 2.2vw, 1.2rem)",
+                            fontWeight: 800,
+                            color: "#fff",
+                            letterSpacing: "-0.02em",
+                            marginBottom: 4,
+                        }}>
+                            <span style={{ color: "var(--neon-blue)" }}>HYGIENE</span> GATEWAY
+                        </p>
+                        <p style={{
+                            fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.2em",
+                            color: "#4b5563",
+                            fontWeight: 700,
+                        }}>
+                            Innovation for a Safer Tomorrow.
+                        </p>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[10px] sm:text-xs font-black uppercase tracking-widest">
-                        <Link
-                            href="/privacy.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-neon-blue transition-colors text-gray-400"
-                        >
-                            Privacy Policy
-                        </Link>
-                        <Link
-                            href="/termsofuse.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-neon-blue transition-colors text-gray-400"
-                        >
-                            Terms of Use
-                        </Link>
-                        <Link href="#team" className="hover:text-neon-blue transition-colors text-gray-400">About Us</Link>
-                        <Link
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSdXjH5dZ1kygninccKuD2vLg8u8wzj74A2-B5X6tHVUIDtcqA/viewform?usp=publish-editor"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-neon-blue hover:text-white transition-colors font-black"
-                        >
-                            Feedback
-                        </Link>
-                    </div>
+                    {/* Links */}
+                    <nav aria-label="Footer navigation">
+                        <ul style={{
+                            listStyle: "none",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "center",
+                            gap: "clamp(14px, 3vw, 28px)",
+                        }}>
+                            {footerLinks.map((link) => (
+                                <li key={link.label}>
+                                    <Link
+                                        href={link.href}
+                                        {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                        style={{
+                                            fontSize: "clamp(0.65rem, 1.3vw, 0.75rem)",
+                                            fontWeight: 700,
+                                            textTransform: "uppercase",
+                                            letterSpacing: "0.12em",
+                                            textDecoration: "none",
+                                            color: link.highlight ? "var(--neon-blue)" : "#4b5563",
+                                            transition: "color 0.2s",
+                                            minHeight: 44,
+                                            display: "flex",
+                                            alignItems: "center",
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.color = link.highlight ? "#fff" : "var(--neon-blue)";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.color = link.highlight ? "var(--neon-blue)" : "#4b5563";
+                                        }}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
 
-                    <div className="text-[10px] uppercase tracking-[0.2em] text-gray-500 text-center font-bold">
+                    {/* Copyright */}
+                    <p style={{
+                        fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.18em",
+                        color: "#374151",
+                        fontWeight: 600,
+                    }}>
                         &copy; {new Date().getFullYear()} Hygiene Gateway Project.
-                    </div>
+                    </p>
                 </div>
             </div>
         </footer>
