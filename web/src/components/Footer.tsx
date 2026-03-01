@@ -5,7 +5,7 @@ import React from "react";
 
 const teamContacts = [
     { name: "Prathmesh Santosh Ghule", email: "prathmesh.ghule.comp.25@vpkbiet.org", phone: "+91 7385546253" },
-    { name: "Prathmesh Sidhyeshwar Joshi", email: "prathmesh.joshi.comp.25@vpkbiet.org", phone: "+91 8766933497" },
+    { name: "Prathamesh Sidhyeshwar Joshi", email: "prathamesh.joshi.comp.25@vpkbiet.org", phone: "+91 8766933497" },
     { name: "Shri Someshwar Hundekari", email: "shri.hundekari.comp.25@vpkbiet.org", phone: "+91 8055575005" },
     { name: "Atharv Vijay Patil", email: "atharv.patil.comp.25@vpkbiet.org", phone: "+91 8407990628" },
 ];
