@@ -45,7 +45,7 @@ export default function Team() {
         <section
             id="team"
             className="section"
-            style={{ background: "#030303", overflow: "hidden", position: "relative" }}
+            style={{ background: "#f8fafc", overflow: "hidden", position: "relative" }}
         >
             <div className="container">
                 {/* Header */}
@@ -64,7 +64,7 @@ export default function Team() {
                             fontWeight: 800,
                             lineHeight: 1.15,
                             letterSpacing: "-0.025em",
-                            color: "#fff",
+                            color: "#0f172a",
                             marginBottom: "clamp(10px, 2vw, 16px)",
                         }}
                     >
@@ -80,7 +80,7 @@ export default function Team() {
                         transition={{ delay: 0.2 }}
                         style={{
                             fontSize: "clamp(0.85rem, 2vw, 1rem)",
-                            color: "#6b7280",
+                            color: "#64748b",
                             lineHeight: 1.7,
                         }}
                     >
@@ -106,23 +106,29 @@ export default function Team() {
                             style={{
                                 padding: "clamp(20px, 4vw, 32px)",
                                 borderRadius: 18,
-                                border: "1px solid rgba(255,255,255,0.08)",
+                                border: "1px solid #e2e8f0",
                                 display: "flex",
                                 flexDirection: "column",
                                 position: "relative",
                                 overflow: "hidden",
                                 cursor: "default",
-                                transition: "border-color 0.25s ease",
+                                transition: "border-color 0.25s ease, box-shadow 0.25s ease",
                             }}
-                            onMouseEnter={(e) => e.currentTarget.style.borderColor = "rgba(0,243,255,0.25)"}
-                            onMouseLeave={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor = "rgba(0,128,255,0.3)";
+                                e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,128,255,0.08)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor = "#e2e8f0";
+                                e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.06)";
+                            }}
                         >
                             {/* Decorative cap icon */}
                             <div style={{
                                 position: "absolute",
                                 top: 12,
                                 right: 12,
-                                opacity: 0.08,
+                                opacity: 0.07,
                                 pointerEvents: "none",
                             }}>
                                 <GraduationCap size={36} color="var(--neon-blue)" />
@@ -141,7 +147,7 @@ export default function Team() {
                                     position: "absolute",
                                     inset: -4,
                                     borderRadius: "50%",
-                                    background: "rgba(0,243,255,0.15)",
+                                    background: "rgba(0,128,255,0.12)",
                                     filter: "blur(8px)",
                                 }} />
                                 <div style={{
@@ -149,9 +155,9 @@ export default function Team() {
                                     width: "100%",
                                     height: "100%",
                                     borderRadius: "50%",
-                                    border: "2px solid rgba(0,243,255,0.35)",
+                                    border: "2px solid rgba(0,128,255,0.3)",
                                     overflow: "hidden",
-                                    background: "#000",
+                                    background: "#f1f5f9",
                                 }}>
                                     {member.image ? (
                                         <Image
@@ -169,7 +175,7 @@ export default function Team() {
                                             alignItems: "center",
                                             justifyContent: "center",
                                         }}>
-                                            <User style={{ width: 32, height: 32, color: "rgba(0,243,255,0.5)" }} />
+                                            <User style={{ width: 32, height: 32, color: "rgba(0,128,255,0.5)" }} />
                                         </div>
                                     )}
                                 </div>
@@ -179,7 +185,7 @@ export default function Team() {
                             <h3 style={{
                                 fontSize: "clamp(0.95rem, 2.2vw, 1.1rem)",
                                 fontWeight: 800,
-                                color: "#fff",
+                                color: "#0f172a",
                                 letterSpacing: "-0.02em",
                                 marginBottom: 4,
                                 lineHeight: 1.25,
@@ -199,7 +205,7 @@ export default function Team() {
 
                             <p style={{
                                 fontSize: "clamp(0.78rem, 1.6vw, 0.9rem)",
-                                color: "#9ca3af",
+                                color: "#64748b",
                                 lineHeight: 1.65,
                                 flex: 1,
                                 marginBottom: "clamp(12px, 2.5vw, 18px)",
@@ -210,11 +216,11 @@ export default function Team() {
                             {/* Degree footer */}
                             <div style={{
                                 paddingTop: "clamp(12px, 2.5vw, 16px)",
-                                borderTop: "1px solid rgba(255,255,255,0.07)",
+                                borderTop: "1px solid #e2e8f0",
                             }}>
                                 <p style={{
                                     fontSize: "clamp(0.7rem, 1.4vw, 0.8rem)",
-                                    color: "#e5e7eb",
+                                    color: "#334155",
                                     fontWeight: 600,
                                     marginBottom: 3,
                                 }}>
@@ -222,7 +228,7 @@ export default function Team() {
                                 </p>
                                 <p style={{
                                     fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
-                                    color: "#6b7280",
+                                    color: "#94a3b8",
                                     textTransform: "uppercase",
                                     letterSpacing: "0.12em",
                                     fontWeight: 700,
@@ -244,7 +250,7 @@ export default function Team() {
                         textAlign: "center",
                         marginTop: "clamp(32px, 6vw, 56px)",
                         fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)",
-                        color: "#4b5563",
+                        color: "#94a3b8",
                         fontStyle: "italic",
                         lineHeight: 1.6,
                         padding: "0 16px",
@@ -261,7 +267,7 @@ export default function Team() {
                 left: "-15%",
                 width: "min(400px, 50vw)",
                 height: "min(400px, 50vw)",
-                background: "rgba(0,243,255,0.04)",
+                background: "rgba(0,128,255,0.04)",
                 filter: "blur(90px)",
                 borderRadius: "50%",
                 pointerEvents: "none",
@@ -272,7 +278,7 @@ export default function Team() {
                 right: "-15%",
                 width: "min(400px, 50vw)",
                 height: "min(400px, 50vw)",
-                background: "rgba(0,243,255,0.04)",
+                background: "rgba(0,128,255,0.04)",
                 filter: "blur(90px)",
                 borderRadius: "50%",
                 pointerEvents: "none",

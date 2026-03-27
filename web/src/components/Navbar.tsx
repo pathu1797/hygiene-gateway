@@ -57,10 +57,10 @@ export default function Navbar() {
                     zIndex: 50,
                     padding: "12px clamp(16px, 5vw, 48px)",
                     transition: "background 0.3s ease, box-shadow 0.3s ease",
-                    background: scrolled ? "rgba(5,5,5,0.92)" : "transparent",
+                    background: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
                     backdropFilter: scrolled ? "blur(14px)" : "none",
                     WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
-                    boxShadow: scrolled ? "0 1px 0 rgba(255,255,255,0.07)" : "none",
+                    boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.07), 0 2px 12px rgba(0,0,0,0.04)" : "none",
                 }}
             >
                 <div style={{
@@ -91,7 +91,7 @@ export default function Navbar() {
                             lineHeight: 1,
                         }}>
                             <span style={{ color: "var(--neon-blue)" }}>HYGIENE</span>
-                            <span style={{ color: "#fff" }}> GATEWAY</span>
+                            <span style={{ color: "#0f172a" }}> GATEWAY</span>
                         </span>
                     </Link>
 
@@ -108,7 +108,7 @@ export default function Navbar() {
                                 style={{
                                     fontSize: "0.75rem",
                                     fontWeight: 700,
-                                    color: "#9ca3af",
+                                    color: "#475569",
                                     textDecoration: "none",
                                     textTransform: "uppercase",
                                     letterSpacing: "0.12em",
@@ -119,7 +119,7 @@ export default function Navbar() {
                                     alignItems: "center",
                                 }}
                                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--neon-blue)")}
-                                onMouseLeave={(e) => (e.currentTarget.style.color = "#9ca3af")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
                             >
                                 {item.name}
                             </Link>
@@ -152,7 +152,7 @@ export default function Navbar() {
                             display: "block",
                             width: 22,
                             height: 2,
-                            background: "#fff",
+                            background: "#0f172a",
                             borderRadius: 2,
                             transition: "transform 0.25s ease, opacity 0.25s ease",
                             transform: isOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
@@ -161,7 +161,7 @@ export default function Navbar() {
                             display: "block",
                             width: 22,
                             height: 2,
-                            background: "#fff",
+                            background: "#0f172a",
                             borderRadius: 2,
                             transition: "opacity 0.25s ease",
                             opacity: isOpen ? 0 : 1,
@@ -170,7 +170,7 @@ export default function Navbar() {
                             display: "block",
                             width: 22,
                             height: 2,
-                            background: "#fff",
+                            background: "#0f172a",
                             borderRadius: 2,
                             transition: "transform 0.25s ease, opacity 0.25s ease",
                             transform: isOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
@@ -185,7 +185,7 @@ export default function Navbar() {
                     style={{
                         position: "fixed",
                         inset: 0,
-                        background: "rgba(0,0,0,0.6)",
+                        background: "rgba(15,23,42,0.35)",
                         zIndex: 40,
                         backdropFilter: "blur(4px)",
                         WebkitBackdropFilter: "blur(4px)",
@@ -206,8 +206,8 @@ export default function Navbar() {
                     right: 0,
                     bottom: 0,
                     width: "min(280px, 85vw)",
-                    background: "#0c0c0c",
-                    borderLeft: "1px solid rgba(255,255,255,0.08)",
+                    background: "#ffffff",
+                    borderLeft: "1px solid #e2e8f0",
                     zIndex: 49,
                     display: "flex",
                     flexDirection: "column",
@@ -216,6 +216,7 @@ export default function Navbar() {
                     transform: isOpen ? "translateX(0)" : "translateX(100%)",
                     transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     overflowY: "auto",
+                    boxShadow: "-4px 0 24px rgba(0,0,0,0.08)",
                 }}
                 className="mobile-menu-panel"
             >
@@ -231,7 +232,7 @@ export default function Navbar() {
                             padding: "12px 16px",
                             fontSize: "1rem",
                             fontWeight: 600,
-                            color: "#d1d5db",
+                            color: "#334155",
                             textDecoration: "none",
                             borderRadius: 10,
                             transition: "color 0.2s, background 0.2s",
@@ -239,10 +240,10 @@ export default function Navbar() {
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.color = "var(--neon-blue)";
-                            e.currentTarget.style.background = "rgba(0,243,255,0.06)";
+                            e.currentTarget.style.background = "rgba(0,128,255,0.06)";
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.color = "#d1d5db";
+                            e.currentTarget.style.color = "#334155";
                             e.currentTarget.style.background = "transparent";
                         }}
                     >
@@ -253,9 +254,9 @@ export default function Navbar() {
                 <div style={{
                     marginTop: "auto",
                     paddingTop: 24,
-                    borderTop: "1px solid rgba(255,255,255,0.07)",
+                    borderTop: "1px solid #e2e8f0",
                     fontSize: "0.7rem",
-                    color: "#4b5563",
+                    color: "#94a3b8",
                     textTransform: "uppercase",
                     letterSpacing: "0.12em",
                     fontWeight: 700,

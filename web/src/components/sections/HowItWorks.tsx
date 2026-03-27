@@ -10,28 +10,28 @@ const steps = [
         title: "Detect",
         description: "An IR sensor detects hand presence within the sanitation zone.",
         color: "var(--neon-blue)",
-        bg: "rgba(0,243,255,0.1)",
+        bg: "rgba(0,128,255,0.1)",
     },
     {
         icon: Droplets,
         title: "Dispense",
         description: "Soap or sanitizer is dispensed automatically. The system confirms successful dispensing.",
-        color: "var(--neon-cyan)",
-        bg: "rgba(0,229,255,0.1)",
+        color: "#0ea5e9",
+        bg: "rgba(14,165,233,0.1)",
     },
     {
         icon: ShieldCheck,
         title: "Verify",
         description: "If no hygiene action is detected, access remains denied.",
-        color: "#4ade80",
-        bg: "rgba(74,222,128,0.1)",
+        color: "#16a34a",
+        bg: "rgba(22,163,74,0.1)",
     },
     {
         icon: LockOpen,
         title: "Allow",
         description: "Only after verification does the gateway unlock for 2–3 seconds.",
-        color: "#ffffff",
-        bg: "rgba(255,255,255,0.08)",
+        color: "#0f172a",
+        bg: "rgba(15,23,42,0.06)",
     },
 ];
 
@@ -58,7 +58,7 @@ export default function HowItWorks() {
         <section
             id="how-it-works"
             ref={containerRef}
-            style={{ position: "relative", height: "300vh", background: "#050505" }}
+            style={{ position: "relative", height: "300vh", background: "#f1f5f9" }}
         >
             {/* Sticky panel */}
             <div style={{
@@ -87,7 +87,7 @@ export default function HowItWorks() {
                                     fontWeight: 800,
                                     lineHeight: 1.15,
                                     letterSpacing: "-0.025em",
-                                    color: "#fff",
+                                    color: "#0f172a",
                                     marginBottom: "clamp(10px, 2vw, 16px)",
                                 }}>
                                     Detect. Verify.{" "}
@@ -95,7 +95,7 @@ export default function HowItWorks() {
                                 </h2>
                                 <p style={{
                                     fontSize: "clamp(0.88rem, 1.8vw, 1.05rem)",
-                                    color: "#6b7280",
+                                    color: "#64748b",
                                     lineHeight: 1.65,
                                 }}>
                                     A seamless sequential process ensures compliance without delay.
@@ -111,7 +111,7 @@ export default function HowItWorks() {
                                     className="step-line"
                                     style={{
                                         background: "var(--neon-blue)",
-                                        boxShadow: "0 0 8px rgba(0,243,255,0.6)",
+                                        boxShadow: "0 0 8px rgba(0,128,255,0.5)",
                                         height: `${(activeStep / (steps.length - 1)) * 100}%`,
                                         transition: "height 0.5s ease",
                                         bottom: "auto",
@@ -123,7 +123,7 @@ export default function HowItWorks() {
                                         <div
                                             key={index}
                                             style={{
-                                                opacity: index === activeStep ? 1 : 0.28,
+                                                opacity: index === activeStep ? 1 : 0.32,
                                                 transition: "opacity 0.4s ease",
                                             }}
                                         >
@@ -134,9 +134,9 @@ export default function HowItWorks() {
                                                 width: "clamp(16px, 2.5vw, 20px)",
                                                 height: "clamp(16px, 2.5vw, 20px)",
                                                 borderRadius: "50%",
-                                                border: `2px solid ${index <= activeStep ? "var(--neon-blue)" : "#374151"}`,
-                                                boxShadow: index <= activeStep ? "0 0 8px rgba(0,243,255,0.5)" : "none",
-                                                background: "#050505",
+                                                border: `2px solid ${index <= activeStep ? "var(--neon-blue)" : "#cbd5e1"}`,
+                                                boxShadow: index <= activeStep ? "0 0 8px rgba(0,128,255,0.4)" : "none",
+                                                background: "#f1f5f9",
                                                 zIndex: 1,
                                                 display: "flex",
                                                 alignItems: "center",
@@ -164,7 +164,7 @@ export default function HowItWorks() {
                                             </h3>
                                             <p style={{
                                                 fontSize: "clamp(0.82rem, 1.6vw, 0.95rem)",
-                                                color: "#d1d5db",
+                                                color: "#475569",
                                                 lineHeight: 1.65,
                                                 fontWeight: 500,
                                             }}>
@@ -185,8 +185,9 @@ export default function HowItWorks() {
                             maxHeight: "min(420px, 55vw)",
                             margin: "0 auto",
                             width: "100%",
-                            background: "rgba(255,255,255,0.02)",
-                            border: "1px solid rgba(255,255,255,0.08)",
+                            background: "#ffffff",
+                            border: "1px solid #e2e8f0",
+                            boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -195,9 +196,9 @@ export default function HowItWorks() {
                             <div style={{
                                 position: "absolute",
                                 inset: 0,
-                                backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                                backgroundImage: "linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)",
                                 backgroundSize: "32px 32px",
-                                opacity: 0.3,
+                                opacity: 0.5,
                             }} />
 
                             {/* Active icon */}
@@ -219,7 +220,7 @@ export default function HowItWorks() {
                                     padding: "clamp(24px, 5vw, 48px)",
                                     borderRadius: "50%",
                                     background: steps[activeStep].bg,
-                                    boxShadow: `0 0 40px ${steps[activeStep].color}33, 0 0 80px ${steps[activeStep].color}1a`,
+                                    boxShadow: `0 0 40px ${steps[activeStep].color}22, 0 0 80px ${steps[activeStep].color}11`,
                                     backdropFilter: "blur(12px)",
                                 }}>
                                     <ActiveIcon style={{

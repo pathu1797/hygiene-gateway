@@ -16,7 +16,7 @@ export default function Future() {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                background: "#000",
+                background: "#0f172a",
                 paddingTop: "clamp(64px, 12vw, 120px)",
                 paddingBottom: "clamp(64px, 12vw, 120px)",
             }}
@@ -35,19 +35,19 @@ export default function Future() {
                     backgroundImage: "url('/future.png')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    opacity: 0.5,
+                    opacity: 0.4,
                 }} />
                 {/* Gradient overlays */}
                 <div style={{
                     position: "absolute",
                     inset: 0,
-                    background: "linear-gradient(to top, #000 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+                    background: "linear-gradient(to top, #0f172a 0%, rgba(15,23,42,0.3) 50%, transparent 100%)",
                     zIndex: 1,
                 }} />
                 <div style={{
                     position: "absolute",
                     inset: 0,
-                    background: "rgba(0,0,0,0.35)",
+                    background: "rgba(15,23,42,0.35)",
                     zIndex: 2,
                 }} />
             </motion.div>
@@ -69,14 +69,14 @@ export default function Future() {
                         display: "inline-block",
                         padding: "6px 16px",
                         borderRadius: 999,
-                        background: "rgba(255,255,255,0.08)",
+                        background: "rgba(255,255,255,0.1)",
                         backdropFilter: "blur(10px)",
                         border: "1px solid rgba(255,255,255,0.18)",
                         fontSize: "clamp(0.6rem, 1.3vw, 0.72rem)",
                         fontWeight: 700,
                         textTransform: "uppercase",
                         letterSpacing: "0.25em",
-                        color: "#e5e7eb",
+                        color: "#e2e8f0",
                         marginBottom: "clamp(20px, 4vw, 32px)",
                     }}>
                         Vision 2030
@@ -106,7 +106,7 @@ export default function Future() {
                     }}>
                         <p style={{
                             fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
-                            color: "#9ca3af",
+                            color: "#94a3b8",
                             lineHeight: 1.7,
                         }}>
                             Automated gateways at hospital entrances. Public facilities with enforced sanitation.
@@ -120,7 +120,7 @@ export default function Future() {
                         </p>
                         <p style={{
                             fontSize: "clamp(0.82rem, 1.7vw, 1rem)",
-                            color: "#6b7280",
+                            color: "#64748b",
                             fontStyle: "italic",
                             marginTop: "clamp(8px, 2vw, 16px)",
                         }}>

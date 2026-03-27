@@ -25,9 +25,9 @@ const footerLinks = [
 export default function Footer() {
     return (
         <footer style={{
-            background: "#000",
-            color: "#9ca3af",
-            borderTop: "1px solid rgba(255,255,255,0.07)",
+            background: "#fff",
+            color: "#64748b",
+            borderTop: "1px solid #e2e8f0",
             paddingTop: "clamp(40px, 8vw, 80px)",
             paddingBottom: "clamp(24px, 5vw, 48px)",
         }}>
@@ -46,23 +46,25 @@ export default function Footer() {
                             style={{
                                 padding: "clamp(14px, 2.5vw, 20px)",
                                 borderRadius: 12,
-                                border: "1px solid rgba(255,255,255,0.08)",
-                                background: "rgba(255,255,255,0)",
-                                transition: "border-color 0.2s, background 0.2s",
+                                border: "1px solid #e2e8f0",
+                                background: "#f8fafc",
+                                transition: "border-color 0.2s, background 0.2s, box-shadow 0.2s",
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = "rgba(0,243,255,0.25)";
-                                e.currentTarget.style.background = "rgba(255,255,255,0.015)";
+                                e.currentTarget.style.borderColor = "rgba(0,128,255,0.25)";
+                                e.currentTarget.style.background = "#fff";
+                                e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,128,255,0.07)";
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-                                e.currentTarget.style.background = "rgba(255,255,255,0)";
+                                e.currentTarget.style.borderColor = "#e2e8f0";
+                                e.currentTarget.style.background = "#f8fafc";
+                                e.currentTarget.style.boxShadow = "none";
                             }}
                         >
                             <h4 style={{
                                 fontSize: "clamp(0.8rem, 1.8vw, 0.9rem)",
                                 fontWeight: 700,
-                                color: "#fff",
+                                color: "#0f172a",
                                 letterSpacing: "-0.01em",
                                 marginBottom: "clamp(8px, 1.5vw, 12px)",
                                 lineHeight: 1.3,
@@ -75,7 +77,7 @@ export default function Footer() {
                                     title={contact.email}
                                     style={{
                                         fontSize: "clamp(0.65rem, 1.3vw, 0.75rem)",
-                                        color: "#6b7280",
+                                        color: "#94a3b8",
                                         textDecoration: "none",
                                         fontWeight: 500,
                                         display: "block",
@@ -87,7 +89,7 @@ export default function Footer() {
                                         lineHeight: "28px",
                                     }}
                                     onMouseEnter={(e) => e.currentTarget.style.color = "var(--neon-blue)"}
-                                    onMouseLeave={(e) => e.currentTarget.style.color = "#6b7280"}
+                                    onMouseLeave={(e) => e.currentTarget.style.color = "#94a3b8"}
                                 >
                                     {contact.email}
                                 </a>
@@ -95,7 +97,7 @@ export default function Footer() {
                                     href={`tel:${contact.phone.replace(/\s+/g, "")}`}
                                     style={{
                                         fontSize: "clamp(0.65rem, 1.3vw, 0.75rem)",
-                                        color: "#6b7280",
+                                        color: "#94a3b8",
                                         textDecoration: "none",
                                         fontWeight: 500,
                                         transition: "color 0.2s",
@@ -105,7 +107,7 @@ export default function Footer() {
                                         alignItems: "center",
                                     }}
                                     onMouseEnter={(e) => e.currentTarget.style.color = "var(--neon-blue)"}
-                                    onMouseLeave={(e) => e.currentTarget.style.color = "#6b7280"}
+                                    onMouseLeave={(e) => e.currentTarget.style.color = "#94a3b8"}
                                 >
                                     {contact.phone}
                                 </a>
@@ -117,7 +119,7 @@ export default function Footer() {
                 {/* Bottom bar */}
                 <div style={{
                     paddingTop: "clamp(20px, 4vw, 32px)",
-                    borderTop: "1px solid rgba(255,255,255,0.07)",
+                    borderTop: "1px solid #e2e8f0",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -129,7 +131,7 @@ export default function Footer() {
                         <p style={{
                             fontSize: "clamp(1rem, 2.2vw, 1.2rem)",
                             fontWeight: 800,
-                            color: "#fff",
+                            color: "#0f172a",
                             letterSpacing: "-0.02em",
                             marginBottom: 4,
                         }}>
@@ -139,7 +141,7 @@ export default function Footer() {
                             fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
                             textTransform: "uppercase",
                             letterSpacing: "0.2em",
-                            color: "#4b5563",
+                            color: "#94a3b8",
                             fontWeight: 700,
                         }}>
                             Innovation for a Safer Tomorrow.
@@ -166,17 +168,17 @@ export default function Footer() {
                                             textTransform: "uppercase",
                                             letterSpacing: "0.12em",
                                             textDecoration: "none",
-                                            color: link.highlight ? "var(--neon-blue)" : "#4b5563",
+                                            color: link.highlight ? "var(--neon-blue)" : "#94a3b8",
                                             transition: "color 0.2s",
                                             minHeight: 44,
                                             display: "flex",
                                             alignItems: "center",
                                         }}
                                         onMouseEnter={(e) => {
-                                            e.currentTarget.style.color = link.highlight ? "#fff" : "var(--neon-blue)";
+                                            e.currentTarget.style.color = link.highlight ? "#0066cc" : "var(--neon-blue)";
                                         }}
                                         onMouseLeave={(e) => {
-                                            e.currentTarget.style.color = link.highlight ? "var(--neon-blue)" : "#4b5563";
+                                            e.currentTarget.style.color = link.highlight ? "var(--neon-blue)" : "#94a3b8";
                                         }}
                                     >
                                         {link.label}
@@ -191,7 +193,7 @@ export default function Footer() {
                         fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
                         textTransform: "uppercase",
                         letterSpacing: "0.18em",
-                        color: "#374151",
+                        color: "#cbd5e1",
                         fontWeight: 600,
                     }}>
                         &copy; {new Date().getFullYear()} Hygiene Gateway Project.

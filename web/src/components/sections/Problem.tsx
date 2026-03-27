@@ -20,7 +20,7 @@ export default function Problem() {
             id="problem"
             ref={containerRef}
             className="section"
-            style={{ background: "#050505" }}
+            style={{ background: "#fff" }}
         >
             <div className="container">
                 <div className="grid-2col">
@@ -36,23 +36,23 @@ export default function Problem() {
                             fontWeight: 800,
                             lineHeight: 1.15,
                             letterSpacing: "-0.025em",
-                            color: "#fff",
+                            color: "#0f172a",
                             marginBottom: "clamp(16px, 3vw, 24px)",
                         }}>
                             Optional hygiene creates{" "}
-                            <span className="text-glow" style={{ color: "var(--red-accent)" }}>
+                            <span style={{ color: "var(--red-accent)" }}>
                                 invisible risks.
                             </span>
                         </h2>
 
                         <p style={{
                             fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
-                            color: "#d1d5db",
+                            color: "#475569",
                             lineHeight: 1.75,
                             marginBottom: "clamp(20px, 4vw, 32px)",
                         }}>
                             In hospitals and laboratories, handwashing is recommended but{" "}
-                            <strong style={{ color: "#fff" }}>not enforced</strong>. This compliance
+                            <strong style={{ color: "#0f172a" }}>not enforced</strong>. This compliance
                             gap allows infections to spread silently. During pandemics, this gap
                             becomes catastrophic.
                         </p>
@@ -60,12 +60,12 @@ export default function Problem() {
                         <blockquote style={{
                             padding: "clamp(14px, 3vw, 20px)",
                             borderLeft: "3px solid var(--red-accent)",
-                            background: "rgba(239,68,68,0.08)",
+                            background: "rgba(220,38,38,0.06)",
                             borderRadius: "0 8px 8px 0",
                         }}>
                             <p style={{
                                 fontSize: "clamp(0.85rem, 1.8vw, 1rem)",
-                                color: "#fecaca",
+                                color: "#991b1b",
                                 fontStyle: "italic",
                                 fontWeight: 500,
                             }}>
@@ -82,13 +82,13 @@ export default function Problem() {
                         <div style={{
                             position: "absolute",
                             inset: 0,
-                            background: "rgba(120,20,20,0.18)",
+                            background: "rgba(220,38,38,0.12)",
                             zIndex: 1,
                         }} />
                         <div style={{
                             position: "absolute",
                             inset: 0,
-                            background: "rgba(0,0,0,0.45)",
+                            background: "rgba(0,0,0,0.3)",
                             zIndex: 2,
                         }} />
                         <video
@@ -127,7 +127,7 @@ export default function Problem() {
                 transform: "translateY(-50%)",
                 width: "min(500px, 60vw)",
                 height: "min(500px, 60vw)",
-                background: "rgba(239,68,68,0.04)",
+                background: "rgba(220,38,38,0.04)",
                 filter: "blur(90px)",
                 borderRadius: "50%",
                 pointerEvents: "none",

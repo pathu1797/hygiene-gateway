@@ -29,30 +29,57 @@ const techStack = [
 
 export default function Technology() {
     return (
-        <section id="technology" className="py-24 px-6 relative overflow-hidden bg-neutral-950">
-            <div className="max-w-7xl mx-auto">
+        <section
+            id="technology"
+            className="section"
+            style={{ background: "#f1f5f9", position: "relative", overflow: "hidden" }}
+        >
+            <div className="container">
 
-                <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <div style={{
+                    textAlign: "center",
+                    maxWidth: "52ch",
+                    margin: "0 auto",
+                    marginBottom: "clamp(32px, 6vw, 64px)",
+                }}>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold"
+                        style={{
+                            fontSize: "clamp(1.8rem, 5vw, 3.2rem)",
+                            fontWeight: 800,
+                            lineHeight: 1.15,
+                            letterSpacing: "-0.025em",
+                            color: "#0f172a",
+                            marginBottom: "clamp(10px, 2vw, 16px)",
+                        }}
                     >
-                        Powered by <span className="text-neon-blue text-glow">Intelligent Automation</span>
+                        Powered by{" "}
+                        <span className="text-glow" style={{ color: "var(--neon-blue)" }}>
+                            Intelligent Automation
+                        </span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-gray-400 text-lg"
+                        style={{
+                            fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
+                            color: "#64748b",
+                            lineHeight: 1.65,
+                        }}
                     >
                         Built using industry-standard robotics components for reliability and scale.
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(min(220px, 100%), 1fr))",
+                    gap: "clamp(14px, 2.5vw, 24px)",
+                }}>
                     {techStack.map((tech, i) => (
                         <motion.div
                             key={i}
@@ -60,21 +87,57 @@ export default function Technology() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="glass p-8 rounded-2xl border border-white/5 hover:border-neon-blue/30 transition-colors group"
+                            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                            className="glass-card"
+                            style={{
+                                padding: "clamp(20px, 4vw, 32px)",
+                                borderRadius: 16,
+                                border: "1px solid #e2e8f0",
+                                transition: "border-color 0.25s ease, box-shadow 0.25s ease",
+                                cursor: "default",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor = "rgba(0,128,255,0.3)";
+                                e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,128,255,0.08)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor = "#e2e8f0";
+                                e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.06)";
+                            }}
                         >
-                            <div className="w-12 h-12 bg-neon-blue/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-neon-blue/20 transition-colors">
-                                <tech.icon className="w-6 h-6 text-neon-blue" />
+                            <div style={{
+                                width: 48,
+                                height: 48,
+                                background: "rgba(0,128,255,0.1)",
+                                borderRadius: 12,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                marginBottom: "clamp(14px, 3vw, 24px)",
+                            }}>
+                                <tech.icon style={{ width: 24, height: 24, color: "var(--neon-blue)" }} />
                             </div>
-                            <h3 className="text-xl font-bold mb-3 text-white">{tech.title}</h3>
-                            <p className="text-gray-400 text-sm leading-relaxed">{tech.desc}</p>
+                            <h3 style={{
+                                fontSize: "clamp(1rem, 2vw, 1.2rem)",
+                                fontWeight: 800,
+                                color: "#0f172a",
+                                marginBottom: "clamp(8px, 1.5vw, 12px)",
+                                letterSpacing: "-0.01em",
+                            }}>
+                                {tech.title}
+                            </h3>
+                            <p style={{
+                                fontSize: "clamp(0.8rem, 1.6vw, 0.9rem)",
+                                color: "#64748b",
+                                lineHeight: 1.65,
+                            }}>
+                                {tech.desc}
+                            </p>
                         </motion.div>
                     ))}
                 </div>
 
             </div>
-
-            {/* Decorative Circuit Lines (CSS only) */}
-            <div className="absolute inset-0 pointer-events-none opacity-20 bg-[url('https://placehold.co/1920x1080/000000/ffffff/png?text=Circuit+Lines')] bg-cover bg-center mix-blend-overlay" />
         </section>
     );
 }

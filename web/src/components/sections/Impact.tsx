@@ -16,7 +16,7 @@ export default function Impact() {
         <section
             id="impact"
             className="section"
-            style={{ background: "#fff", color: "#111", position: "relative", overflow: "hidden" }}
+            style={{ background: "#fff", color: "#0f172a", position: "relative", overflow: "hidden" }}
         >
             <div className="container">
                 <div className="grid-2col">
@@ -33,7 +33,7 @@ export default function Impact() {
                             fontWeight: 800,
                             lineHeight: 1.15,
                             letterSpacing: "-0.025em",
-                            color: "#111",
+                            color: "#0f172a",
                             marginBottom: "clamp(14px, 3vw, 22px)",
                         }}>
                             A New Standard for{" "}
@@ -41,7 +41,7 @@ export default function Impact() {
                         </h2>
                         <p style={{
                             fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
-                            color: "#374151",
+                            color: "#475569",
                             lineHeight: 1.75,
                             marginBottom: "clamp(12px, 2.5vw, 18px)",
                         }}>
@@ -50,7 +50,7 @@ export default function Impact() {
                         </p>
                         <p style={{
                             fontSize: "clamp(0.88rem, 1.8vw, 1rem)",
-                            color: "#111",
+                            color: "#0f172a",
                             fontWeight: 700,
                         }}>
                             Designed not only for today — but for future pandemics.
@@ -82,7 +82,7 @@ export default function Impact() {
                                 <p style={{
                                     fontSize: "clamp(1.5rem, 4vw, 2.2rem)",
                                     fontWeight: 900,
-                                    color: "#111",
+                                    color: "#0f172a",
                                     lineHeight: 1.1,
                                     letterSpacing: "-0.02em",
                                     marginBottom: 4,
@@ -94,7 +94,7 @@ export default function Impact() {
                                     fontWeight: 700,
                                     textTransform: "uppercase",
                                     letterSpacing: "0.1em",
-                                    color: "#374151",
+                                    color: "#64748b",
                                 }}>
                                     {stat.label}
                                 </p>
@@ -111,7 +111,7 @@ export default function Impact() {
                 right: 0,
                 width: "30%",
                 height: "100%",
-                background: "linear-gradient(to left, #f3f4f6, transparent)",
+                background: "linear-gradient(to left, #f1f5f9, transparent)",
                 transform: "skewX(-8deg) translateX(20%)",
                 pointerEvents: "none",
             }} />
